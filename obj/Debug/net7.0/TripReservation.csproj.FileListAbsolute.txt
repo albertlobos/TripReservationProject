@@ -1,0 +1,15 @@
+/Users/nelso/Desktop/Spring2023/TripReservation/bin/Debug/net7.0/TripReservation
+/Users/nelso/Desktop/Spring2023/TripReservation/bin/Debug/net7.0/TripReservation.deps.json
+/Users/nelso/Desktop/Spring2023/TripReservation/bin/Debug/net7.0/TripReservation.runtimeconfig.json
+/Users/nelso/Desktop/Spring2023/TripReservation/bin/Debug/net7.0/TripReservation.dll
+/Users/nelso/Desktop/Spring2023/TripReservation/bin/Debug/net7.0/TripReservation.pdb
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.csproj.AssemblyReference.cache
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.AssemblyInfoInputs.cache
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.AssemblyInfo.cs
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.csproj.CoreCompileInputs.cache
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.dll
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/refint/TripReservation.dll
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.pdb
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.genruntimeconfig.cache
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/ref/TripReservation.dll
