@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace TripReservation;
 
 public class Trip
@@ -5,6 +7,7 @@ public class Trip
 
 
     private Status _status;
+    private ArrayList _listOfPeople;
     private int _time;
     private string _destination;
     private string _vehicle;
@@ -12,7 +15,7 @@ public class Trip
     private int _startDate;
     private int _endDate;
     
-    public Trip(int time, string destination, string vehicle, int startTime, int startDate, int endDate)
+    public Trip(int time, string destination, string vehicle, int startTime, int startDate, int endDate, ArrayList listOfPeople)
     {
         _time = time;
         _destination = destination;
@@ -20,7 +23,14 @@ public class Trip
         _startTime = startTime;
         _startDate = startDate;
         _endDate = endDate;
+        _listOfPeople = listOfPeople;
         _status = Status.Create;
+    }
+
+    public ArrayList ListOfPeople
+    {
+        get => _listOfPeople;
+        set => _listOfPeople = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     public Status Status
