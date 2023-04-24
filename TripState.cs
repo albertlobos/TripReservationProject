@@ -3,6 +3,6 @@ namespace TripReservation;
 public abstract class TripState
 {
     
-    public abstract Status Execute();
+    public abstract Status Execute(TripContext context);
     
 }

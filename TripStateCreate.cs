@@ -9,9 +9,10 @@ public class TripStateCreate : TripState
         _trip = trip;
     }
 
-    public override Status Execute()
+    public override Status Execute(TripContext context)
     {
         Console.WriteLine("Hello you Executed the TripState Create");
+        context.State = new TripStateAddTravelers(context.Trip);
         return Status.AddTravelers;
     }
 }

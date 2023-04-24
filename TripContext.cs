@@ -50,7 +50,7 @@ public class TripContext
 
     public Status Execute()
     {
-        _trip.Status = _state.Execute();
+        _trip.Status = _state.Execute(this); 
         return _trip.Status;
     }
 }

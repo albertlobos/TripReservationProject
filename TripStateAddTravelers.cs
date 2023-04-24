@@ -8,7 +8,7 @@ public class TripStateAddTravelers : TripState
         _trip = trip;
     }
 
-    public override Status Execute()
+    public override Status Execute(TripContext context)
     {
         throw new NotImplementedException();
     }

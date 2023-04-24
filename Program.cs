@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Xml.Serialization;
+﻿using System.Text.Json;
 
 namespace TripReservation;
 class Program
@@ -16,8 +13,11 @@ class Program
         newTrip.Status = newTripContext.Execute();
         Console.WriteLine(newTrip.Status);
         Console.WriteLine(newTripContext.State);
+        
+        
         Console.WriteLine();
-        string jsonString = JsonSerializer.Serialize(newTripContext);
+        Console.WriteLine();
+        var jsonString = JsonSerializer.Serialize(newTripContext);
         Console.Write(jsonString);
         Console.WriteLine();
         Console.WriteLine();
