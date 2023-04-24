@@ -18,6 +18,16 @@ public class TripContext
             case Status.AddTravelers:
                 _state = new TripStateAddTravelers(trip);
                 break;
+            case Status.AddDestinations:
+                break;
+            case Status.ChoosePayment:
+                break;
+            case Status.AddNote:
+                break;
+            case Status.Complete:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

@@ -19,6 +19,8 @@ class Program
         Console.WriteLine();
         string jsonString = JsonSerializer.Serialize(newTripContext);
         Console.Write(jsonString);
+        Console.WriteLine();
+        Console.WriteLine();
         
         
         
