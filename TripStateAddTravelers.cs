@@ -1,18 +1,12 @@
-using System.Data;
 
 namespace TripReservation;
 
 public class TripStateAddTravelers : TripState
 {
-    private Trip _trip;
-    public TripStateAddTravelers(Trip trip)
-    {
-        _trip = trip;
-    }
-
+    
     public override Status Execute(TripContext context)
     {
-        bool done = false;
+        var done = false;
         do
         {
             Console.WriteLine("Add a traveler \n");
@@ -25,7 +19,7 @@ public class TripStateAddTravelers : TripState
             Console.WriteLine("Enter Age");
             var age = Convert.ToInt32(Console.ReadLine());
 
-            Person newPerson = new Person(firstName, lastName, phoneNumber, age);
+            var newPerson = new Person(firstName, lastName, phoneNumber, age);
             context.Trip.ListOfPeople.Add(newPerson);
             Console.WriteLine();
             Console.WriteLine("Do you want to add another traveler?");

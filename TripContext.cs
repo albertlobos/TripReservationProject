@@ -9,26 +9,8 @@ public class TripContext
     public TripContext(Trip trip)
     {
         _trip = trip;
-
-        switch (trip.Status)
-        {
-            case Status.Create:
-                _state = new TripStateCreate(trip);
-                break;
-            case Status.AddTravelers:
-                _state = new TripStateAddTravelers(trip);
-                break;
-            case Status.AddDestinations:
-                break;
-            case Status.ChoosePayment:
-                break;
-            case Status.AddNote:
-                break;
-            case Status.Complete:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        _state = TripStateFactory.GetState(this);
+        
     }
 
     public Trip Trip
