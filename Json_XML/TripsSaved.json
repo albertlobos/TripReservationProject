@@ -1,0 +1,28 @@
+[
+  {
+    "Status": 0,
+    "Time": 0,
+    "StartTime": 0,
+    "StartDate": 0,
+    "EndDate": 0,
+    "Note": null,
+    "Amount": null,
+    "Destination": null,
+    "ListOfPeople": [],
+    "Vehicle": null,
+    "Payment": null
+  },
+  {
+    "Status": 0,
+    "Time": 0,
+    "StartTime": 0,
+    "StartDate": 0,
+    "EndDate": 0,
+    "Note": null,
+    "Amount": null,
+    "Destination": null,
+    "ListOfPeople": [],
+    "Vehicle": null,
+    "Payment": null
+  }
+]

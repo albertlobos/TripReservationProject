@@ -12,8 +12,8 @@ internal static class Program
         Trip.AddTrip(newTrip);
         Trip.AddTrip(newTrip2);
         
-        Saver.SaveTrip(Trip.AllTrips);
-        //QuickMenu();
+        Saver.JsonSaveTrip(Trip.AllTrips);
+       // QuickMenu();
 
     }
 
