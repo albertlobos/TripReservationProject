@@ -4,75 +4,52 @@ namespace TripReservation;
 
 public class Trip
 {
-    
-    private Status _status;
-    private ArrayList _listOfPeople;
-    private int _time;
+    private ArrayList? _listOfPeople = new ArrayList();
     private string? _destination;
-    private string _vehicle;
-    private int _startTime;
-    private int _startDate;
-    private int _endDate;
-    
-    public Trip(int time, string? destination, string vehicle, int startTime, int startDate, int endDate, ArrayList listOfPeople)
+    private string? _vehicle;
+
+    public Trip()
     {
-        _time = time;
+        Status = Status.Create;
+    }
+    public Trip(int time, string? destination, string? vehicle, int startTime, int startDate, int endDate, ArrayList? listOfPeople)
+    {
+        Time = time;
         _destination = destination;
         _vehicle = vehicle;
-        _startTime = startTime;
-        _startDate = startDate;
-        _endDate = endDate;
+        StartTime = startTime;
+        StartDate = startDate;
+        EndDate = endDate;
         _listOfPeople = listOfPeople;
-        _status = Status.Create;
+        Status = Status.Create;
     }
 
-    public ArrayList ListOfPeople
-    {
-        get => _listOfPeople;
-        set => _listOfPeople = value ?? throw new ArgumentNullException(nameof(value));
-    }
 
-    public Status Status
-    {
-        get => _status;
-        set => _status = value;
-    }
 
-    public int Time
-    {
-        get => _time;
-        set => _time = value;
-    }
+    public Status Status { get; set; }
+    public int Time { get; set; }
+    public int StartTime { get; set; }
 
+    public int StartDate { get; set; }
+
+    public int EndDate { get; set; }
     public string? Destination
     {
         get => _destination;
         set => _destination = value ?? throw new ArgumentNullException(nameof(value));
     }
-
-    public string Vehicle
+    public ArrayList? ListOfPeople
+    {
+        get => _listOfPeople;
+        set => _listOfPeople = value ?? throw new ArgumentNullException(nameof(value));
+    }
+    public string? Vehicle
     {
         get => _vehicle;
         set => _vehicle = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public int StartTime
-    {
-        get => _startTime;
-        set => _startTime = value;
-    }
 
-    public int StartDate
-    {
-        get => _startDate;
-        set => _startDate = value;
-    }
-
-    public int EndDate
-    {
-        get => _endDate;
-        set => _endDate = value;
-    }
 }
 
 
