@@ -14,7 +14,7 @@ public static class TripStateFactory
             Status.PayCash => new TripStatePayCash(),
             Status.PayCheck => new TripStatePayCheck(),
             Status.AddNote => new TripStateAddNote(),
-            Status.Complete => new TripStateAddComplete(),
+            Status.Complete => new TripStateComplete(),
             _ => throw new InvalidOperationException()
         };
     }
