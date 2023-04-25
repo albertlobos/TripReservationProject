@@ -9,8 +9,9 @@ public class TripStateAddTravelers : TripState
         var done = false;
         do
         {
-            Console.WriteLine("Add a traveler \n");
-            Console.WriteLine("Enter First Name");
+            Console.WriteLine("************************");
+            Console.WriteLine("**** Add a traveler ****");
+            Console.WriteLine("************************");
             var firstName = Console.ReadLine();
             if (firstName == "quit") return Status.AddTravelers;
             Console.WriteLine("Enter Last Name");
@@ -40,7 +41,7 @@ public class TripStateAddTravelers : TripState
             }
         } while (done == false);
 
-        context.State = this;
+        context.State = new TripStateAddDestinations();
         return Status.AddDestinations;
     }
 }

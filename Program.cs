@@ -11,21 +11,23 @@ class Program
         Console.WriteLine(newTrip.Status);
         TripContext newTripContext = new TripContext(newTrip);
         Console.WriteLine(newTrip.Status);
-        newTrip.Status = newTripContext.Execute();
+        newTripContext.Execute();
         Console.WriteLine(newTrip.Status);
         Console.WriteLine(newTripContext.State);
         
         
         Console.WriteLine();
         Console.WriteLine();
-        var jsonString = JsonSerializer.Serialize(newTripContext);
+        var jsonString = JsonSerializer.Serialize(newTrip);
         Console.Write(jsonString);
         Console.WriteLine();
         Console.WriteLine();
-        newTrip.Status = newTripContext.Execute();
+        //
+        newTripContext.Execute();
+        //
         Console.WriteLine(newTrip.Status);
         Console.WriteLine(newTripContext.State);
-        jsonString = JsonSerializer.Serialize(newTripContext);
+        jsonString = JsonSerializer.Serialize(newTrip);
         Console.Write(jsonString);
         
         

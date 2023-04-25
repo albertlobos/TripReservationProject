@@ -8,13 +8,13 @@ public class Trip
     private Status _status;
     private ArrayList _listOfPeople;
     private int _time;
-    private string _destination;
+    private string? _destination;
     private string _vehicle;
     private int _startTime;
     private int _startDate;
     private int _endDate;
     
-    public Trip(int time, string destination, string vehicle, int startTime, int startDate, int endDate, ArrayList listOfPeople)
+    public Trip(int time, string? destination, string vehicle, int startTime, int startDate, int endDate, ArrayList listOfPeople)
     {
         _time = time;
         _destination = destination;
@@ -44,7 +44,7 @@ public class Trip
         set => _time = value;
     }
 
-    public string Destination
+    public string? Destination
     {
         get => _destination;
         set => _destination = value ?? throw new ArgumentNullException(nameof(value));

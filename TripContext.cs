@@ -32,9 +32,8 @@ public class TripContext
         _state = newState;
     }
 
-    public Status Execute()
+    public void Execute()
     {
         _trip.Status = _state.Execute(this); 
-        return _trip.Status;
     }
 }
