@@ -26,7 +26,7 @@ public class TripStateAddTravelers : TripState
             var age = Convert.ToInt32(ageString);
 
             var newPerson = new Person(firstName, lastName, phoneNumber, age);
-            context.Trip.ListOfPeople.Add(newPerson);
+            context.Trip.ListOfPeople!.Add(newPerson);
             Console.WriteLine();
             Console.WriteLine("Do you want to add another traveler?");
             Console.WriteLine("Enter Y for yes and N for no or \"quit\" to quit");
