@@ -7,6 +7,7 @@ public class Trip
     private ArrayList? _listOfPeople = new ArrayList();
     private string? _destination;
     private string? _vehicle;
+    private Payment? _payment;
 
     public Trip()
     {
@@ -48,47 +49,9 @@ public class Trip
         get => _vehicle;
         set => _vehicle = value ?? throw new ArgumentNullException(nameof(value));
     }
-
-
-}
-
-
-
-/*
-
-private State _state = State.Started;
-private State _state2 = State.Unfinished;
-public enum State
-{
-    Started,
-    Unfinished,
-    Finished,
-    Canceled,
-    AwaitingTravelers,
-    AwaitingPackages,
-    AwaitingPayment,
-    AwaitingNote
-}
-
-public enum Action
-{
-    AddTravelers,
-    AddPackages,
-    AddPayment,
-    AddNote,
-    Finishing,
-    Saving,
-}
-
-State ChangeState(State current, State current2, Action action) =>
-    (current, current2, action) switch
+    public Payment? Payment
     {
-        (State.Started, State.Unfinished, Action.AddTravelers) => _state2 = State.AwaitingTravelers,
-        (State.Started, State.AwaitingTravelers, Action.AddPackages) => _state2 = State.AwaitingPackages,
-        (State.Started, State.AwaitingPackages, Action.AddPayment) => _state2 = State.AwaitingPayment,
-        (State.Started, State.AwaitingPayment, Action.AddNote) => _state2 = State.AwaitingNote,
-        (State.Started, State.AwaitingNote, Action.Finishing) => _state2 = State.AwaitingNote,
-        _ => throw new ArgumentOutOfRangeException()
-    };
-
-*/
+        get => _payment;
+        set => _payment = value ?? throw new ArgumentNullException(nameof(value));
+    }
+}
