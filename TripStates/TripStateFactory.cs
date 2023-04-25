@@ -1,5 +1,3 @@
-using System.Data;
-
 namespace TripReservation.TripStates;
 
 public static class TripStateFactory

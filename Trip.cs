@@ -4,8 +4,7 @@ namespace TripReservation;
 
 public class Trip
 {
-
-
+    
     private Status _status;
     private ArrayList _listOfPeople;
     private int _time;

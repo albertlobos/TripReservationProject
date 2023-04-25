@@ -1,5 +1,5 @@
 
-namespace TripReservation;
+namespace TripReservation.TripStates;
 
 public class TripStateAddTravelers : TripState
 {
@@ -12,24 +12,32 @@ public class TripStateAddTravelers : TripState
             Console.WriteLine("Add a traveler \n");
             Console.WriteLine("Enter First Name");
             var firstName = Console.ReadLine();
+            if (firstName == "quit") return Status.AddTravelers;
             Console.WriteLine("Enter Last Name");
             var lastName = Console.ReadLine();
+            if (lastName == "quit") return Status.AddTravelers;
             Console.WriteLine("Enter Phone ");
             var phoneNumber = Console.ReadLine();
+            if (phoneNumber == "quit") return Status.AddTravelers;
             Console.WriteLine("Enter Age");
-            var age = Convert.ToInt32(Console.ReadLine());
+            var ageString = Console.ReadLine();
+            if (ageString == "quit") return Status.AddTravelers;
+            var age = Convert.ToInt32(ageString);
 
             var newPerson = new Person(firstName, lastName, phoneNumber, age);
             context.Trip.ListOfPeople.Add(newPerson);
             Console.WriteLine();
             Console.WriteLine("Do you want to add another traveler?");
-            Console.WriteLine("Enter Y for yes and N for no");
+            Console.WriteLine("Enter Y for yes and N for no or \"quit\" to quit");
             var answer = Console.ReadLine();
-            if (answer == "N")
+            switch (answer)
             {
-                done = true;
+                case "quit":
+                    return Status.AddTravelers;
+                case "N":
+                    done = true;
+                    break;
             }
-
         } while (done == false);
 
         context.State = this;
