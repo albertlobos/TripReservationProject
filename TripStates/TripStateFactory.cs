@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace TripReservation.TripStates;
 
 public static class TripStateFactory
@@ -5,7 +7,6 @@ public static class TripStateFactory
 
     public static TripState GetState(TripContext context)
     {
-        
         switch (context.Trip.Status)
         {
             case Status.Create:
@@ -13,17 +14,18 @@ public static class TripStateFactory
             case Status.AddTravelers:
                 return new TripStateAddTravelers();
             case Status.AddDestinations:
-                
-                break;
+                return new TripStateAddDestinations();
             case Status.ChoosePayment:
-                break;
+                return new TripStateChoosePaymentType();
+            case Status.PayCash:
+                return new TripStatePayCash();
+            case Status.PayCredit:
+                return new TripStatePayCredit();
             case Status.AddNote:
-                break;
+                return new TripStateAddNote();
             case Status.Complete:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+                return new TripStateAddComplete();
         }
-        return null;
+        throw new InvalidOperationException();
     }
 }

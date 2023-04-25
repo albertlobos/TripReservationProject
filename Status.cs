@@ -6,6 +6,8 @@ public enum Status
     AddTravelers,
     AddDestinations,
     ChoosePayment,
+    PayCash,
+    PayCredit,
     AddNote,
     Complete
 }
