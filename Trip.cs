@@ -19,8 +19,8 @@ public class Trip
          _listOfPeople = listOfPeople;
          Status = Status.Create;
      }
-    
-     
+
+    private static List<Trip> _allTrips = new List<Trip>();
     private ArrayList? _listOfPeople = new ArrayList();
     private string? _destination;
     private string? _vehicle;
@@ -55,5 +55,14 @@ public class Trip
         set => _payment = value ?? throw new ArgumentNullException(nameof(value));
     }
 
+    public static void AddTrip(Trip trip)
+    {
+        _allTrips.Add(trip);
+    }
 
+    public static List<Trip> AllTrips
+    {
+        get => _allTrips;
+        set => _allTrips = value ?? throw new ArgumentNullException(nameof(value));
+    }
 }
