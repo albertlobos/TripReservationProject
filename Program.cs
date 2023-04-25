@@ -23,10 +23,12 @@ internal static class Program
             Console.WriteLine("Current Trip in Json: ");
             Console.WriteLine(jsonString);
             Console.WriteLine();
+            Console.WriteLine();
             
             
             Console.WriteLine("Continue creating trip? Y/N");
             var answer = Console.ReadLine();
+            Console.WriteLine();
             if (answer == "Y") context.Execute();
             else quit = true;
         } while (quit == false);

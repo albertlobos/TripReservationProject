@@ -49,7 +49,7 @@ public class TripStateAddDestinations : TripState
             Console.WriteLine("Would You like to Change your Destination? Y/N");
             var answer = Console.ReadLine();
             if (answer == "quit") return Status.AddDestinations;
-            if (Console.ReadLine() == "N") done = true;
+            if (answer == "N") done = true;
         } while (done == false);
 
         context.State = new TripStateChoosePaymentType();
