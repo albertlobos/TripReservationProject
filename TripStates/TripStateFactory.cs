@@ -7,25 +7,17 @@ public static class TripStateFactory
 
     public static TripState GetState(TripContext context)
     {
-        switch (context.Trip.Status)
+        return context.Trip.Status switch
         {
-            case Status.Create:
-                return new TripStateCreate();
-            case Status.AddTravelers:
-                return new TripStateAddTravelers();
-            case Status.AddDestinations:
-                return new TripStateAddDestinations();
-            case Status.ChoosePayment:
-                return new TripStateChoosePaymentType();
-            case Status.PayCash:
-                return new TripStatePayCash();
-            case Status.PayCredit:
-                return new TripStatePayCredit();
-            case Status.AddNote:
-                return new TripStateAddNote();
-            case Status.Complete:
-                return new TripStateAddComplete();
-        }
-        throw new InvalidOperationException();
+            Status.Create => new TripStateCreate(),
+            Status.AddTravelers => new TripStateAddTravelers(),
+            Status.AddDestinations => new TripStateAddDestinations(),
+            Status.ChoosePayment => new TripStateChoosePaymentType(),
+            Status.PayCash => new TripStatePayCash(),
+            Status.PayCredit => new TripStatePayCredit(),
+            Status.AddNote => new TripStateAddNote(),
+            Status.Complete => new TripStateAddComplete(),
+            _ => throw new InvalidOperationException()
+        };
     }
 }
