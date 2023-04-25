@@ -12,7 +12,7 @@ public static class TripStateFactory
             Status.AddDestinations => new TripStateAddDestinations(),
             Status.ChoosePayment => new TripStateChoosePaymentType(),
             Status.PayCash => new TripStatePayCash(),
-            Status.PayCredit => new TripStatePayCheck(),
+            Status.PayCheck => new TripStatePayCheck(),
             Status.AddNote => new TripStateAddNote(),
             Status.Complete => new TripStateAddComplete(),
             _ => throw new InvalidOperationException()

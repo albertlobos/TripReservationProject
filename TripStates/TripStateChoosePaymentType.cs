@@ -24,7 +24,7 @@ public class TripStateChoosePaymentType: TripState
                     return Status.PayCash;
                 case "check":
                     context.State = new TripStatePayCheck();
-                    return Status.PayCredit;
+                    return Status.PayCheck;
                 case "quit":
                     return Status.ChoosePayment;
                 default:
