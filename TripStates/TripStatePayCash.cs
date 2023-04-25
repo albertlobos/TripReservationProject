@@ -4,6 +4,16 @@ public class TripStatePayCash : TripState
 {
     public override Status Execute(TripContext context)
     {
-        throw new NotImplementedException();
+        do
+        {
+            Console.WriteLine("**************************");
+            Console.WriteLine("****   Cash Payment   ****");
+            Console.WriteLine("**************************\n");
+            Console.WriteLine("How much will you be paying in cash?");
+            
+            
+            
+            
+        } while (true);
     }
 }

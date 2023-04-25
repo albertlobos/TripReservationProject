@@ -54,4 +54,6 @@ public class Trip
         get => _payment;
         set => _payment = value ?? throw new ArgumentNullException(nameof(value));
     }
+
+    public decimal? Amount { get; set; }
 }

@@ -30,18 +30,23 @@ public class TripStateAddDestinations : TripState
                 case "Quit":
                     return Status.AddDestinations;
                 case "1":
+                    context.Trip.Amount = (decimal?)(543.99 * context.Trip.ListOfPeople!.Count);
                     context.Trip.Destination = "Atlanta";
                     break;
                 case "2":
+                    context.Trip.Amount = (decimal?)(769.99 * context.Trip.ListOfPeople!.Count);
                     context.Trip.Destination = "Los Angeles";
                     break;
                 case "3":
+                    context.Trip.Amount = (decimal?)(1083.99 * context.Trip.ListOfPeople!.Count);
                     context.Trip.Destination = "New York";
                     break;
                 case "4":
+                    context.Trip.Amount = (decimal?)(382.99 * context.Trip.ListOfPeople!.Count);
                     context.Trip.Destination = "Dallas";
                     break;
                 case "5":
+                    context.Trip.Amount = (decimal?)(297.99 * context.Trip.ListOfPeople!.Count);
                     context.Trip.Destination = "Denver";
                     break;
             }
