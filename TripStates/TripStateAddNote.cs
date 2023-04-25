@@ -31,6 +31,7 @@ public class TripStateAddNote: TripState
                     case "quit":
                         return Status.AddNote;
                     case "Y":
+                        context.Trip.Note = note;
                         context.State = new TripStateComplete();
                         return Status.Complete;
                     case "N":
