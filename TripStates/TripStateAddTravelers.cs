@@ -6,6 +6,11 @@ public class TripStateAddTravelers : TripState
     
     public override Status Execute(TripContext context)
     {
+        return AddDestinations(context);
+    }
+
+    private static Status AddDestinations(TripContext context)
+    {
         var done = false;
         do
         {

@@ -5,7 +5,11 @@ public class TripStateAddDestinations : TripState
 
     public override Status Execute(TripContext context)
     {
+        return AddDestinations(context);
+    }
 
+    private static Status AddDestinations(TripContext context)
+    {
         bool done = false;
         do
         {
@@ -41,11 +45,11 @@ public class TripStateAddDestinations : TripState
                     context.Trip.Destination = "Denver";
                     break;
             }
+
             Console.WriteLine("Would You like to Change your Destination? Y/N");
             var answer = Console.ReadLine();
             if (answer == "quit") return Status.AddDestinations;
             if (Console.ReadLine() == "N") done = true;
-
         } while (done == false);
 
         context.State = new TripStateChoosePaymentType();
