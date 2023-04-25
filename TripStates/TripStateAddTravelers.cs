@@ -17,6 +17,7 @@ public class TripStateAddTravelers : TripState
             Console.WriteLine("************************");
             Console.WriteLine("**** Add a traveler ****");
             Console.WriteLine("************************");
+            Console.WriteLine("Enter First Name");
             var firstName = Console.ReadLine();
             if (firstName == "quit") return Status.AddTravelers;
             Console.WriteLine("Enter Last Name");
