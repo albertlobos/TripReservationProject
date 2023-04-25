@@ -9,16 +9,16 @@ public class TripStateChoosePaymentType: TripState
             Console.WriteLine("***************************");
             Console.WriteLine("*** Choose Payment Type ***");
             Console.WriteLine("***************************\n");
-            Console.WriteLine("Are You Paying Cash or Credit?\n" +
-                              "Enter \"cash\" for cash or \"credit\" for credit or \"quit\" to quit");
+            Console.WriteLine("Are You Paying Cash or Check?\n" +
+                              "Enter \"cash\" for cash or \"check\" for check or \"quit\" to quit");
             var answer = Console.ReadLine();
             switch (answer)
             {
                 case "cash":
                     context.State = new TripStatePayCash();
                     return Status.PayCash;
-                case "credit":
-                    context.State = new TripStatePayCredit();
+                case "check":
+                    context.State = new TripStatePayCheck();
                     return Status.PayCredit;
                 case "quit":
                     return Status.ChoosePayment;
