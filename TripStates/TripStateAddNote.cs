@@ -1,6 +1,6 @@
-namespace TripReservation;
+namespace TripReservation.TripStates;
 
-public class TripStateAddDestinations : TripState
+public class TripStateAddNote: TripState
 {
     public override Status Execute(TripContext context)
     {

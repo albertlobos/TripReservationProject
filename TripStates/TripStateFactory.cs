@@ -1,4 +1,4 @@
-namespace TripReservation;
+namespace TripReservation.TripStates;
 
 public static class TripStateFactory
 {

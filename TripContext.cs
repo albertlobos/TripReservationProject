@@ -1,3 +1,5 @@
+using TripReservation.TripStates;
+
 namespace TripReservation;
 
 public class TripContext
