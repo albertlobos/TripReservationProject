@@ -4,6 +4,11 @@ public class TripStateChoosePaymentType: TripState
 {
     public override Status Execute(TripContext context)
     {
+        return ChoosePayment(context);
+    }
+
+    private static Status ChoosePayment(TripContext context)
+    {
         do
         {
             Console.WriteLine("***************************");
