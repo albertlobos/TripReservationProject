@@ -4,15 +4,14 @@ namespace TripReservation;
 
 public class TripContext
 {
-    private Trip _trip;
     private TripState _state;
-    
-    
+    private Trip _trip;
+
+
     public TripContext(Trip trip)
     {
         _trip = trip;
         _state = TripStateFactory.GetState(this);
-        
     }
 
     public Trip Trip
@@ -34,6 +33,6 @@ public class TripContext
 
     public void Execute()
     {
-        _trip.Status = _state.Execute(this); 
+        _trip.Status = _state.Execute(this);
     }
 }

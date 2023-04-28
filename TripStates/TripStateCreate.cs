@@ -2,8 +2,6 @@ namespace TripReservation.TripStates;
 
 public class TripStateCreate : TripState
 {
-    
-
     public override Status Execute(TripContext context)
     {
         Console.WriteLine("Hello you Executed the TripState Create");

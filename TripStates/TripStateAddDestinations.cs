@@ -2,7 +2,6 @@ namespace TripReservation.TripStates;
 
 public class TripStateAddDestinations : TripState
 {
-
     public override Status Execute(TripContext context)
     {
         return AddDestinations(context);
@@ -10,7 +9,7 @@ public class TripStateAddDestinations : TripState
 
     private static Status AddDestinations(TripContext context)
     {
-        bool done = false;
+        var done = false;
         do
         {
             Console.WriteLine("*************************");

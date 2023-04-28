@@ -5,7 +5,6 @@ namespace TripReservation.Json_XML;
 
 public static class Saver
 {
-    
     public static void JsonSaveTrip(List<Trip> tripList)
     {
         var assemblyLocation = Assembly.GetExecutingAssembly().Location;
@@ -17,17 +16,15 @@ public static class Saver
         Console.WriteLine("Running Path: " + runningPath + "/Json_XML/TripsSaved.json");
         var filePath = Path.Join(runningPath, "/Json_XML/TripsSaved.json");
         Console.WriteLine("File Path: " + filePath);
-        
+
         var serializer = new JsonSerializerOptions
         {
             WriteIndented = true
         };
         var jsonString = JsonSerializer.Serialize(tripList, serializer);
 
-        
-        Console.WriteLine(File.Exists(filePath)); 
-        File.WriteAllText(filePath, jsonString);
 
-        
+        Console.WriteLine(File.Exists(filePath));
+        File.WriteAllText(filePath, jsonString);
     }
 }

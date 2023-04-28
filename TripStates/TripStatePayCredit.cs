@@ -6,7 +6,7 @@ public class TripStatePayCheck : TripState
     {
         return PayCheck(context);
     }
-    
+
     private static Status PayCheck(TripContext context)
     {
         var amountDue = context.Trip.Amount;
@@ -20,11 +20,9 @@ public class TripStatePayCheck : TripState
             var amountPaying = Console.ReadLine();
             var payment = Convert.ToDecimal(amountPaying);
 
-            if (amountPaying == "quit")
-            {
-                return Status.PayCheck;
-            }
-            else if (payment == amountDue)
+            if (amountPaying == "quit") return Status.PayCheck;
+
+            if (payment == amountDue)
             {
                 Console.WriteLine("Enter the check number");
                 var checkNum = Convert.ToInt32(Console.ReadLine());
@@ -33,10 +31,8 @@ public class TripStatePayCheck : TripState
                 context.State = new TripStateAddNote();
                 return Status.AddNote;
             }
-            else
-            {
-                Console.WriteLine("Payment must be exact amount due.");
-            }
+
+            Console.WriteLine("Payment must be exact amount due.");
         } while (true);
     }
 }

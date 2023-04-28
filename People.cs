@@ -1,46 +1,33 @@
-
-
-
-
 namespace TripReservation;
 
 public class People
 {
-    private int _guests = 0;
+    private static People? _people;
 
     private string _name = string.Empty;
 
-    private static People? _people = null;
+    public int Guests { get; set; } = 0;
 
-    public static People? GetInstance()
-    {
-        lock (typeof(People))
-        {
-            if (_people == null)
-            {
-                _people = new People();
-            }
-            return _people;
-        }
-    }
-
-    public int Guests
-    {
-        get => _guests;
-        set => _guests = value;
-    }
     public string Name
     {
         get => _name;
         set => _name = value ?? throw new ArgumentNullException(nameof(value));
     }
-    
+
+    public static People? GetInstance()
+    {
+        lock (typeof(People))
+        {
+            if (_people == null) _people = new People();
+            return _people;
+        }
+    }
+
 
     public virtual void PrintName()
     {
-        System.Console.Out.Write(_name);
+        Console.Out.Write(_name);
     }
-
 }
 
 // public class People {

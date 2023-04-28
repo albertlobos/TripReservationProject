@@ -2,7 +2,6 @@ namespace TripReservation.Itinerary;
 
 public class ItineraryFactory
 {
-    
     public Trip _trip;
     //private Trip _state;
 
@@ -10,23 +9,15 @@ public class ItineraryFactory
     {
         _trip = trip;
 
-        Console.WriteLine(TripCanProduceItinerary(_trip) == true
+        Console.WriteLine(TripCanProduceItinerary(_trip)
             ? "Itinerary is ready!"
             : "Trip Status is not complete!");
     }
-    
-    public Boolean TripCanProduceItinerary(Trip trip)
-    { 
-            if(trip.Status == Status.Complete)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+
+    public bool TripCanProduceItinerary(Trip trip)
+    {
+        if (trip.Status == Status.Complete)
+            return true;
+        return false;
     }
-            
-    
-    
 }

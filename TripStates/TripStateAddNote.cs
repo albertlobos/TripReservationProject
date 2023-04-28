@@ -1,6 +1,6 @@
 namespace TripReservation.TripStates;
 
-public class TripStateAddNote: TripState
+public class TripStateAddNote : TripState
 {
     public override Status Execute(TripContext context)
     {
@@ -20,23 +20,21 @@ public class TripStateAddNote: TripState
             {
                 return Status.AddNote;
             }
-            else
-            {
-                Console.WriteLine("Your note says:  \n" + note);
-                Console.WriteLine("Do you want to continue adding this note? Y/N/quit");
-                note = Console.ReadLine();
 
-                switch (note)
-                {
-                    case "quit":
-                        return Status.AddNote;
-                    case "Y":
-                        context.Trip.Note = note;
-                        context.State = new TripStateComplete();
-                        return Status.Complete;
-                    case "N":
-                        break;
-                }
+            Console.WriteLine("Your note says:  \n" + note);
+            Console.WriteLine("Do you want to continue adding this note? Y/N/quit");
+            note = Console.ReadLine();
+
+            switch (note)
+            {
+                case "quit":
+                    return Status.AddNote;
+                case "Y":
+                    context.Trip.Note = note;
+                    context.State = new TripStateComplete();
+                    return Status.Complete;
+                case "N":
+                    break;
             }
         } while (true);
     }

@@ -1,9 +1,7 @@
-
 namespace TripReservation.TripStates;
 
 public class TripStateAddTravelers : TripState
 {
-    
     public override Status Execute(TripContext context)
     {
         return AddDestinations(context);

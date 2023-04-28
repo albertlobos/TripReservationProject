@@ -2,7 +2,6 @@ namespace TripReservation.TripStates;
 
 public static class TripStateFactory
 {
-
     public static TripState GetState(TripContext context)
     {
         return context.Trip.Status switch

@@ -20,21 +20,17 @@ public class TripStatePayCash : TripState
             var amountPaying = Console.ReadLine();
             var payment = Convert.ToDecimal(amountPaying);
 
-            if (amountPaying == "quit")
-            {
-                return Status.PayCash;
-            }
-            else if (payment == amountDue)
+            if (amountPaying == "quit") return Status.PayCash;
+
+            if (payment == amountDue)
             {
                 context.Trip.Payment = new CashPayment(payment);
                 Console.WriteLine("You have paid for the trip!");
                 context.State = new TripStateAddNote();
                 return Status.AddNote;
             }
-            else
-            {
-                Console.WriteLine("Payment must be exact amount due.");
-            }
+
+            Console.WriteLine("Payment must be exact amount due.");
         } while (true);
     }
 }

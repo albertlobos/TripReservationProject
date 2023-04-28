@@ -1,26 +1,21 @@
-
 namespace TripReservation;
 
 public class Package
 {
+    private static Package? _pack;
     private string _from = string.Empty;
-
-    private string _to = string.Empty;
-
-    private int _price;
 
     private int _hours;
 
-    private static Package? _pack = null;
+    private int _price;
+
+    private string _to = string.Empty;
 
     public static Package? GetInstance()
     {
         lock (typeof(Package))
         {
-            if (_pack == null)
-            {
-                _pack = new Package();
-            }
+            if (_pack == null) _pack = new Package();
             return _pack;
         }
     }
@@ -47,11 +42,9 @@ public class Package
 
     public virtual void Display()
     {
-        Console.Out.Write(this._from + " " + this._to + " " + this._hours + " " + this
-            ._price);
+        Console.Out.Write(_from + " " + _to + " " + _hours + " " + _price);
     }
 }
-
 
 // public class Package {
 // 	String from = "";
@@ -91,5 +84,3 @@ public class Package
 // 		System.out.print(this.from + " " + this.to + " "+ this.hours + " " + this.price);
 // 	}
 // }
-
-
