@@ -11,13 +11,13 @@ internal static class Program
         switch (agentLogIn)
         {
             case 1:
-                Loader.JsonLoader();
+                Reader.JsonLoader();
                 break;
             case 2:
-                Loader.JsonLoader();
+                Reader.JsonLoader();
                 break;
             case 3:
-                Loader.JsonLoader();
+                Reader.JsonLoader();
                 break;
         }
 
@@ -27,7 +27,7 @@ internal static class Program
 
         do
         {
-            Saver.JsonSaveTrip();
+            Writer.JsonSaveTrip();
             ListAgentTripsView();
             Console.WriteLine();
             Console.WriteLine();
@@ -50,12 +50,12 @@ internal static class Program
                 case "new":
                 {
                     CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-                    Saver.JsonSaveTrip();
+                    Writer.JsonSaveTrip();
                     break;
                 }
                 case "N":
                     quit = true;
-                    Saver.JsonSaveTrip();
+                    Writer.JsonSaveTrip();
                     break;
             }
         } while (quit == false);

@@ -2,7 +2,7 @@ namespace TripReservation.Itinerary;
 
 public class ItineraryFactory
 {
-    public Trip _trip;
+    private Trip _trip;
     //private Trip _state;
 
     public void Get(Trip trip)
@@ -14,10 +14,14 @@ public class ItineraryFactory
             : "Trip Status is not complete!");
     }
 
-    public bool TripCanProduceItinerary(Trip trip)
+    public Trip Trip
     {
-        if (trip.Status == Status.Complete)
-            return true;
-        return false;
+        get => _trip;
+        set => _trip = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    private static bool TripCanProduceItinerary(Trip trip)
+    {
+        return trip.Status == Status.Complete;
     }
 }
