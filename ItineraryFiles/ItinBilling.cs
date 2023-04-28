@@ -7,7 +7,7 @@ public class ItinBilling : ItinDecorator
     private readonly string Billingdecor = "\nTotal: " + _trip.Amount + "\n";
 
 
-    public ItinBilling(Itinerary itin) : base(itin)
+    public ItinBilling(ItineraryFiles.ItinComponent itin) : base(itin)
     {
     }
 

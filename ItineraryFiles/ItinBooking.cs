@@ -8,7 +8,7 @@ public class ItinBooking : ItinDecorator
         "\nBooking Time was: " + _trip.StartDate + "\nEnd time is: " + _trip.EndDate + "\n";
 
 
-    public ItinBooking(Itinerary itin) : base(itin)
+    public ItinBooking(ItineraryFiles.ItinComponent itin) : base(itin)
     {
     }
 
