@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using System.Text.Json;
 
 namespace TripReservation.Json_XML;
@@ -12,12 +13,13 @@ public static class Saver
             WriteIndented = true
         };
         var jsonString = JsonSerializer.Serialize(tripList, serializer);
-        
-        
-        Console.WriteLine();
-        Console.WriteLine();
-        Console.WriteLine(File.Exists(@"/Users/nelso/Desktop/Spring2023/TripReservation/Json_XML/TripsSaved.json"));
-        File.WriteAllText(@"/Users/nelso/Desktop/Spring2023/TripReservation/Json_XML/TripsSaved.json", 
+
+        FileInfo newFileInfo = new FileInfo("TripsSaved.json");
+       // var name = Environment.
+       // Console.WriteLine(name);.
+       Console.WriteLine();
+       Console.WriteLine(File.Exists(@"/Users/nelso/Desktop/Spring2023/TripReservation/Json_XML/TripsSaved.json"));
+       File.WriteAllText(@"/Users/nelso/Desktop/Spring2023/TripReservation/Json_XML/TripsSaved.json", 
             jsonString);
 
         
