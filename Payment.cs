@@ -1,11 +1,12 @@
 namespace TripReservation;
 
-public abstract class Payment
+public class Payment
 {
-    protected Payment(decimal amount)
+    public Payment(decimal amount)
     {
         Amount = amount;
     }
 
-    public decimal Amount { get; }
+
+    public decimal Amount { get; set; }
 }

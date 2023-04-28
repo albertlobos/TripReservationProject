@@ -7,57 +7,58 @@ internal static class Program
 {
     private static void Main()
     {
-        
-            var agentLogIn = AgentLogIn();
-            switch (agentLogIn)
+        var agentLogIn = AgentLogIn();
+        switch (agentLogIn)
+        {
+            case 1:
+                Loader.JsonLoader();
+                break;
+            case 2:
+                Loader.JsonLoader();
+                break;
+            case 3:
+                Loader.JsonLoader();
+                break;
+        }
+
+        CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+
+        var quit = false;
+
+        do
+        {
+            Saver.JsonSaveTrip();
+            ListAgentTripsView();
+            Console.WriteLine();
+            Console.WriteLine();
+            //var num = Console.ReadLine();
+            //var input = Convert.ToInt32(num);
+            Console.WriteLine("Would you like to work on one of these trips or start a new one?");
+            Console.WriteLine("Type in either: Y/N/new");
+            var answer = Console.ReadLine();
+            switch (answer)
             {
-                case 1:
-                    if(Trip.AllTrips == null)
-                        Loader.JsonLoader();
+                case "Y":
+                {
+                    Console.WriteLine("Which trip would you like to work on?");
+                    var choice = Convert.ToInt32(Console.ReadLine());
+                    ContinueTrip(Trip.AllTrips[choice - 1]);
+
+                    //Gotta put stuff here
                     break;
-                case 2:
-                    if(Trip.AllTrips == null)
-                        Loader.JsonLoader();
+                }
+                case "new":
+                {
+                    CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+                    Saver.JsonSaveTrip();
                     break;
-                case 3:
-                    if(Trip.AllTrips == null)
-                        Loader.JsonLoader();
+                }
+                case "N":
+                    quit = true;
+                    Saver.JsonSaveTrip();
                     break;
             }
-
-            CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-
-            var quit = false;
-            Saver.JsonSaveTrip();
-            do
-            {
-                ListAgentTripsView();
-                Console.WriteLine();
-                Console.WriteLine();
-                //var num = Console.ReadLine();
-                //var input = Convert.ToInt32(num);
-                Console.WriteLine("Would you like to work on one of these trips?");
-                var answer = Console.ReadLine();
-                switch (answer)
-                {
-                    case "Y":
-                    {
-                        Console.WriteLine("Which trip would you like to work on?");
-                        var choice = Convert.ToInt32(Console.ReadLine());
-                        ContinueTrip(Trip.AllTrips[choice-1]);
-                        
-                        //Gotta put stuff here
-                        break;
-                    }
-                    case "N":
-                        quit = true;
-                        break;
-                }
-                
-                
-            } while (quit == false);
-
-
+        } while (quit == false);
     }
 
     private static void ContinueTrip(Trip trip)
@@ -68,6 +69,7 @@ internal static class Program
         if (trip.Status == Status.Complete)
         {
             //print itinerary
+            Trip.AllTrips.Insert(trip.TripId - 1, trip);
             return;
         }
 
@@ -76,7 +78,7 @@ internal static class Program
             var currentStatus = trip.Status;
             Console.WriteLine("You are in state: " + trip.Status);
             context.Execute();
-            if (trip.Status == currentStatus) break;
+            if (trip.Status == currentStatus) return;
             Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?");
 
             switch (Console.ReadLine())
@@ -87,12 +89,10 @@ internal static class Program
                     Trip.AddTrip(trip);
                     return;
             }
-            
         }
 
         Console.WriteLine("You have completed the trip!");
         Console.WriteLine("We will take you back to the list of trips");
-
     }
 
     private static void CreatingTripView(int num, Agent agent)
@@ -107,8 +107,8 @@ internal static class Program
         Console.WriteLine("A new Trip has been created, would you like to continue creating the trip?");
         Console.WriteLine("Enter Y for yes or N for no, you may also quit now.");
         var input = Console.ReadLine();
-        
-        
+
+
         //This will trigger TripStateAddTravelers
         switch (input)
         {
@@ -125,15 +125,15 @@ internal static class Program
                 Trip.AddTrip(newTrip);
                 return;
         }
-        
+
         if (context.Trip.Status == Status.AddTravelers) return;
-        
+
         //This will trigger the TripStateAddDestination
         Console.WriteLine();
         Console.WriteLine("You have added travelers to your trip!");
         Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
         input = Console.ReadLine();
-        
+
         switch (input)
         {
             case "Y":
@@ -151,15 +151,15 @@ internal static class Program
         }
 
         if (context.Trip.Status == Status.AddDestinations) return;
-        
-        
+
+
         //This will trigger the TripStateChoosePayment
-        
+
         Console.WriteLine();
         Console.WriteLine("You have added Destinations to your trip!");
         Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
         input = Console.ReadLine();
-        
+
         switch (input)
         {
             case "Y":
@@ -199,10 +199,9 @@ internal static class Program
                     Trip.AddTrip(newTrip);
                     return;
             }
-            
         }
-        
-        if(context.Trip.Status == Status.PayCheck)
+
+        if (context.Trip.Status == Status.PayCheck)
         {
             Console.WriteLine();
             Console.WriteLine("You have chosen Check Payment to your trip!");
@@ -223,13 +222,11 @@ internal static class Program
                     Trip.AddTrip(newTrip);
                     return;
             }
-            
         }
-        
-        if(context.Trip.Status is Status.PayCash or Status.PayCheck) return;
-        
-        
-        
+
+        if (context.Trip.Status is Status.PayCash or Status.PayCheck) return;
+
+
         //This will trigger the note stage
         Console.WriteLine();
         Console.WriteLine("You have paid for your trip! You may now add a note to the trip!");
@@ -250,9 +247,9 @@ internal static class Program
                 Trip.AddTrip(newTrip);
                 return;
         }
-            
-        if(context.Trip.Status == Status.AddNote) return;
-        
+
+        if (context.Trip.Status == Status.AddNote) return;
+
         //This will trigger the completing stage
         Console.WriteLine();
         Console.WriteLine("You have added the note to the trip! ");
@@ -274,12 +271,12 @@ internal static class Program
                 Trip.AddTrip(newTrip);
                 return;
         }
-        
+
         Console.WriteLine();
         Console.WriteLine("You have completed your trip!! Your trips you are working on will now be shown.");
         Console.WriteLine();
     }
-    
+
 
     //Maybe a bool to see if you want to restart or not
     private static void ListAgentTripsView()
@@ -287,7 +284,6 @@ internal static class Program
         Console.WriteLine("This is Agents Trips Saved");
         Console.WriteLine("**************************");
         Trip.PrintTrips();
-
     }
 
     private static int AgentLogIn()

@@ -16,7 +16,7 @@ public static class Saver
         Console.WriteLine("Running Path: " + runningPath + "/Json_XML/TripsSaved.json");
         var filePath = Path.Join(runningPath, "/Json_XML/TripsSaved.json");
         Console.WriteLine("File Path: " + filePath);
-        
+
         var jsonString = JsonSerializer.Serialize(Trip.AllTrips);
 
         Console.WriteLine(File.Exists(filePath));

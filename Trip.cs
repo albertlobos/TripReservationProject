@@ -81,9 +81,8 @@ public class Trip
             Console.WriteLine("No trips");
             return;
         }
+
         foreach (var trip in AllTrips)
-        {
             Console.WriteLine("The trip id is: " + trip.TripId + ".. Status is: " + trip.Status);
-        }
     }
 }
