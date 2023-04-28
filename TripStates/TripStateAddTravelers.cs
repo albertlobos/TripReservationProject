@@ -30,7 +30,6 @@ public class TripStateAddTravelers : TripState
                 return Status.AddTravelers;
             }
             Console.WriteLine("Enter Phone ");
-            Trip.AddTrip(context.Trip);
             var phoneNumber = Console.ReadLine();
             if (phoneNumber == "quit")
             {
@@ -55,7 +54,6 @@ public class TripStateAddTravelers : TripState
             switch (answer)
             {
                 case "quit":
-                    Trip.AddTrip(context.Trip);
                     return Status.AddTravelers;
                 case "N":
                     done = true;

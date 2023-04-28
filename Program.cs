@@ -7,28 +7,7 @@ internal static class Program
 {
     private static void Main()
     {
-        // Trip newTrip = new Trip();
-        // TripContext context = new TripContext(newTrip);
-        // context.Execute();
-        // context.Execute();
-        // Trip.AddTrip(newTrip);
-        // Trip newTrip2 = new Trip();
-        // newTrip.Destination = "LA";
-        // newTrip2.Destination = "Atlanta";
-        // TripContext context2 = new TripContext(newTrip2);
-        // context.Trip = newTrip2;
-        // context2.Execute();
-        // context2.Execute();
-        // Trip.AddTrip(newTrip2);
-        // Saver.JsonSaveTrip(Trip.AllTrips);
-        // Loader.JsonLoader();
-        // Console.WriteLine(Trip.AllTrips[0].Destination);
-        // Console.WriteLine(Trip.AllTrips[1].Destination);
         
-        
-        do
-        {
-
             var agentLogIn = AgentLogIn();
             switch (agentLogIn)
             {
@@ -46,20 +25,19 @@ internal static class Program
                     break;
             }
 
-            CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance()); 
+            CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+
+            bool quit = false;
+            do
+            {
             ListAgentTripsView();
             Console.WriteLine();
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        } while (true);
+            quit = true;
+
+
+
+
+            } while (quit!);
 
 
     }
@@ -250,6 +228,7 @@ internal static class Program
     }
     
 
+    //Maybe a bool to see if you want to restart or not
     public static void ListAgentTripsView()
     {
         Console.WriteLine("This is Agents Trips Saved");
