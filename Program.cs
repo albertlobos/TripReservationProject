@@ -27,18 +27,43 @@ internal static class Program
 
             CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
 
-            bool quit = false;
+            var quit = false;
+            Saver.JsonSaveTrip();
             do
             {
-            ListAgentTripsView();
-            Console.WriteLine();
-            quit = true;
+                ListAgentTripsView();
+                Console.WriteLine();
+                Console.WriteLine();
+                //var num = Console.ReadLine();
+                //var input = Convert.ToInt32(num);
+                Console.WriteLine("Would you like to work on one of these trips?");
+                var answer = Console.ReadLine();
+                switch (answer)
+                {
+                    case "Y":
+                    {
+                        Console.WriteLine("Which trip would you like to work on?");
+                        var choice = Convert.ToInt32(Console.ReadLine());
+                        ContinueTrip(Trip.AllTrips[choice]);
+                        
+                        //Gotta put stuff here
+                        break;
+                    }
+                    case "N":
+                        quit = true;
+                        break;
+                }
+                
+                
+            } while (quit == false);
 
 
+    }
 
-
-            } while (quit!);
-
+    private static void ContinueTrip(Trip trip)
+    {
+        var context = new TripContext(trip);
+        
 
     }
 
@@ -229,12 +254,12 @@ internal static class Program
     
 
     //Maybe a bool to see if you want to restart or not
-    public static void ListAgentTripsView()
+    private static void ListAgentTripsView()
     {
         Console.WriteLine("This is Agents Trips Saved");
         Console.WriteLine("**************************");
         Trip.PrintTrips();
-        
+
     }
 
     private static int AgentLogIn()
