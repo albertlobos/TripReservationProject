@@ -1,4 +1,4 @@
-namespace TripReservation.Itinerary;
+namespace TripReservation.ItineraryFiles;
 
 public class ItinPerson : ItinDecorator
 {
@@ -6,7 +6,7 @@ public class ItinPerson : ItinDecorator
     //string Persondecor = "";
 
 
-    public ItinPerson(Itinerary itin) : base(itin)
+    public ItinPerson(ItineraryFiles.Itinerary itin) : base(itin)
     {
     }
 

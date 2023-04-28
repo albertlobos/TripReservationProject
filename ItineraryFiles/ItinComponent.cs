@@ -1,4 +1,4 @@
-namespace TripReservation;
+namespace TripReservation.ItineraryFiles;
 
 public interface ItinComponent
 {

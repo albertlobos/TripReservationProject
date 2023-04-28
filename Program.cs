@@ -1,4 +1,6 @@
 ﻿using System.Text.Json;
+using System.Xml.Serialization;
+using TripReservation.ItineraryFiles;
 using TripReservation.Json_XML;
 
 namespace TripReservation;
@@ -7,6 +9,9 @@ internal static class Program
 {
     private static void Main()
     {
+
+ 
+        
         var agentLogIn = AgentLogIn();
         switch (agentLogIn)
         {
@@ -20,11 +25,11 @@ internal static class Program
                 Reader.JsonLoader();
                 break;
         }
-
+        
         CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-
+        
         var quit = false;
-
+        
         do
         {
             Writer.JsonSaveTrip();
@@ -43,7 +48,7 @@ internal static class Program
                     Console.WriteLine("Which trip would you like to work on?");
                     var choice = Convert.ToInt32(Console.ReadLine());
                     ContinueTrip(Trip.AllTrips[choice - 1]);
-
+        
                     //Gotta put stuff here
                     break;
                 }
@@ -59,8 +64,18 @@ internal static class Program
                     break;
             }
         } while (quit == false);
+        
     }
 
+    //This will handle creating the itinerary
+    private static void CreateItinerary(Trip trip)
+    {
+        ItineraryFactory.Get(trip);
+        var itinerary = new ItineraryFiles.Itinerary();
+        itinerary.Output();
+    }
+
+    //This will take you through the creating a trip from where ever it ended from to finish
     private static void ContinueTrip(Trip trip)
     {
         var context = new TripContext(trip);
@@ -69,6 +84,7 @@ internal static class Program
         if (trip.Status == Status.Complete)
         {
             //print itinerary
+            CreateItinerary(trip);
             Trip.AllTrips.Insert(trip.TripId - 1, trip);
             return;
         }
@@ -95,6 +111,7 @@ internal static class Program
         Console.WriteLine("We will take you back to the list of trips");
     }
 
+    //This will take you through the creating a trip from new to finish
     private static void CreatingTripView(int num, Agent agent)
     {
         Console.WriteLine();
@@ -278,14 +295,16 @@ internal static class Program
     }
 
 
-    //Maybe a bool to see if you want to restart or not
+    //This is the ListAgentTripsView which will print out all the trips
     private static void ListAgentTripsView()
     {
         Console.WriteLine("This is Agents Trips Saved");
         Console.WriteLine("**************************");
         Trip.PrintTrips();
+        Console.WriteLine("**************************");
     }
 
+    //This is the first view where the agent will log in
     private static int AgentLogIn()
     {
         Console.WriteLine("****************************************");
@@ -321,6 +340,7 @@ internal static class Program
         } while (true);
     }
 
+    //This was to practice
     private static void QuickMenu()
     {
         var quit = false;

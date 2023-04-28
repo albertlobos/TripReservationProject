@@ -1,3 +1,5 @@
+using TripReservation.ItineraryFiles;
+
 namespace TripReservation.Itinerary;
 
 public class ItinDestination : ItinDecorator
@@ -5,7 +7,7 @@ public class ItinDestination : ItinDecorator
     private readonly string Destinationdecor = "\nDestination: " + _trip.Destination + "\n";
 
 
-    public ItinDestination(Itinerary itin) : base(itin)
+    public ItinDestination(ItineraryFiles.Itinerary itin) : base(itin)
     {
     }
 

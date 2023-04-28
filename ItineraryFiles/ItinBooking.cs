@@ -1,4 +1,6 @@
-namespace TripReservation.Itinerary;
+using TripReservation.Itinerary;
+
+namespace TripReservation.ItineraryFiles;
 
 public class ItinBooking : ItinDecorator
 {
