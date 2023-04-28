@@ -44,7 +44,7 @@ internal static class Program
                     {
                         Console.WriteLine("Which trip would you like to work on?");
                         var choice = Convert.ToInt32(Console.ReadLine());
-                        ContinueTrip(Trip.AllTrips[choice]);
+                        ContinueTrip(Trip.AllTrips[choice-1]);
                         
                         //Gotta put stuff here
                         break;
@@ -63,7 +63,35 @@ internal static class Program
     private static void ContinueTrip(Trip trip)
     {
         var context = new TripContext(trip);
-        
+        Trip.AllTrips.Remove(trip);
+
+        if (trip.Status == Status.Complete)
+        {
+            //print itinerary
+            return;
+        }
+
+        while (trip.Status != Status.Complete)
+        {
+            var currentStatus = trip.Status;
+            Console.WriteLine("You are in state: " + trip.Status);
+            context.Execute();
+            if (trip.Status == currentStatus) break;
+            Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?");
+
+            switch (Console.ReadLine())
+            {
+                case "Y":
+                    break;
+                case "N":
+                    Trip.AddTrip(trip);
+                    return;
+            }
+            
+        }
+
+        Console.WriteLine("You have completed the trip!");
+        Console.WriteLine("We will take you back to the list of trips");
 
     }
 
