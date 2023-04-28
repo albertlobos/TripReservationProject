@@ -20,7 +20,11 @@ public class TripStatePayCash : TripState
             var amountPaying = Console.ReadLine();
             var payment = Convert.ToDecimal(amountPaying);
 
-            if (amountPaying == "quit") return Status.PayCash;
+            if (amountPaying == "quit")
+            {
+                Trip.AddTrip(context.Trip);
+                return Status.PayCash;
+            }
 
             if (payment == amountDue)
             {

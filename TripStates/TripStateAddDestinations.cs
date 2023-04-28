@@ -26,7 +26,8 @@ public class TripStateAddDestinations : TripState
             var destination = Console.ReadLine();
             switch (destination)
             {
-                case "Quit":
+                case "quit":
+                    Trip.AddTrip(context.Trip);
                     return Status.AddDestinations;
                 case "1":
                     context.Trip.Amount = (decimal?)(543.99 * context.Trip.ListOfPeople!.Count);
@@ -52,8 +53,15 @@ public class TripStateAddDestinations : TripState
 
             Console.WriteLine("Would You like to Change your Destination? Y/N");
             var answer = Console.ReadLine();
-            if (answer == "quit") return Status.AddDestinations;
-            if (answer == "N") done = true;
+            switch (answer)
+            {
+                case "quit":
+                    Trip.AddTrip(context.Trip);
+                    return Status.AddDestinations;
+                case "N":
+                    done = true;
+                    break;
+            }
         } while (done == false);
 
         context.State = new TripStateChoosePaymentType();

@@ -3,10 +3,12 @@ using System.Text.Json;
 
 namespace TripReservation.Json_XML;
 
-public static class Saver
+public class Loader
 {
-    public static void JsonSaveTrip()
+    
+    public static void JsonLoader()
     {
+        
         var assemblyLocation = Assembly.GetExecutingAssembly().Location;
         Console.WriteLine("Assembly Location: " + assemblyLocation);
         var runningPath = Path.GetDirectoryName(assemblyLocation);
@@ -17,9 +19,7 @@ public static class Saver
         var filePath = Path.Join(runningPath, "/Json_XML/TripsSaved.json");
         Console.WriteLine("File Path: " + filePath);
         
-        var jsonString = JsonSerializer.Serialize(Trip.AllTrips);
-
-        Console.WriteLine(File.Exists(filePath));
-        File.WriteAllText(@"/Users/nelso/Desktop/Spring2023/TripReservation/TripsSaved.json", jsonString);
+        Trip.AllTrips = JsonSerializer.Deserialize<List<Trip>>(File.ReadAllText(@"/Users/nelso/Desktop/Spring2023/TripReservation/TripsSaved.json"));
+        
     }
 }

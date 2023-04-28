@@ -17,16 +17,33 @@ public class TripStateAddTravelers : TripState
             Console.WriteLine("************************");
             Console.WriteLine("Enter First Name");
             var firstName = Console.ReadLine();
-            if (firstName == "quit") return Status.AddTravelers;
+            if (firstName == "quit")
+            {
+                Trip.AddTrip(context.Trip);
+                return Status.AddTravelers;
+            }
             Console.WriteLine("Enter Last Name");
             var lastName = Console.ReadLine();
-            if (lastName == "quit") return Status.AddTravelers;
+            if (lastName == "quit")
+            {
+                Trip.AddTrip(context.Trip);
+                return Status.AddTravelers;
+            }
             Console.WriteLine("Enter Phone ");
+            Trip.AddTrip(context.Trip);
             var phoneNumber = Console.ReadLine();
-            if (phoneNumber == "quit") return Status.AddTravelers;
+            if (phoneNumber == "quit")
+            {
+                Trip.AddTrip(context.Trip);
+                return Status.AddTravelers;
+            }
             Console.WriteLine("Enter Age");
             var ageString = Console.ReadLine();
-            if (ageString == "quit") return Status.AddTravelers;
+            if (ageString == "quit")
+            {
+                Trip.AddTrip(context.Trip);
+                return Status.AddTravelers;
+            }
             var age = Convert.ToInt32(ageString);
 
             var newPerson = new Person(firstName, lastName, phoneNumber, age);
@@ -38,6 +55,7 @@ public class TripStateAddTravelers : TripState
             switch (answer)
             {
                 case "quit":
+                    Trip.AddTrip(context.Trip);
                     return Status.AddTravelers;
                 case "N":
                     done = true;
