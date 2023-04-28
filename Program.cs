@@ -13,7 +13,7 @@ internal static class Program
         Trip.AddTrip(newTrip2);
         
         Saver.JsonSaveTrip(Trip.AllTrips);
-        QuickMenu();
+        //QuickMenu();
 
     }
 
