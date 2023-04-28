@@ -16,28 +16,16 @@ public class Trip
         Status = Status.Create;
         TripId = ++_allId;
     }
+    
 
-    public Trip(int time, string? destination, string? vehicle, int startTime, int startDate, int endDate,
-        ArrayList? listOfPeople)
-    {
-        Time = time;
-        _destination = destination;
-        _vehicle = vehicle;
-        StartTime = startTime;
-        StartDate = startDate;
-        EndDate = endDate;
-        _listOfPeople = listOfPeople;
-        Status = Status.Create;
-    }
-
-    public int TripId { get; set; } = _allId;
+    public int TripId { get; set; }
     public Status Status { get; set; }
-    public int Time { get; set; }
-    public int StartTime { get; set; }
-    public int StartDate { get; set; }
-    public int EndDate { get; set; }
-    public string? Note { get; set; }
-    public decimal? Amount { get; set; }
+
+    public string? StartTime { get; set; }//
+    public string? StartDate { get; set; }//
+    public string? EndDate { get; set; }//
+    public string? Note { get; set; }//
+    public decimal? Amount { get; set; }//
 
     public string? Destination
     {
@@ -49,7 +37,7 @@ public class Trip
     {
         get => _listOfPeople;
         set => _listOfPeople = value ?? null;
-    }
+    }//
 
     public string? Vehicle
     {
@@ -61,18 +49,18 @@ public class Trip
     {
         get => _payment;
         set => _payment = value ?? null;
-    }
+    }//
 
     public static List<Trip>? AllTrips
     {
         get => _allTrips;
         set => _allTrips = value ?? null;
-    }
+    }//
 
     public static void AddTrip(Trip trip)
     {
         _allTrips.Add(trip);
-    }
+    }//
 
     public static void PrintTrips()
     {
@@ -84,5 +72,5 @@ public class Trip
 
         foreach (var trip in AllTrips)
             Console.WriteLine("The trip id is: " + trip.TripId + ".. Status is: " + trip.Status);
-    }
+    }//
 }
