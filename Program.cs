@@ -70,9 +70,13 @@ internal static class Program
     //This will handle creating the itinerary
     private static void CreateItinerary(Trip trip)
     {
+        Console.WriteLine("I the creat itinerarty method");
         ItineraryFactory.Get(trip);
-        var itinerary = new ItineraryFiles.Itinerary();
-        itinerary.Output();
+       // ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
+     //   itinerary.Output();
+        Console.WriteLine();
+      //  ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
+      //  itinerary.Output();
     }
 
     //This will take you through the creating a trip from where ever it ended from to finish
@@ -102,11 +106,12 @@ internal static class Program
                 case "Y":
                     break;
                 case "N":
-                    Trip.AddTrip(trip);
+                    Trip.AllTrips.Insert(trip.TripId - 1, trip);
                     return;
             }
         }
 
+        Trip.AllTrips.Insert(trip.TripId - 1, trip);
         Console.WriteLine("You have completed the trip!");
         Console.WriteLine("We will take you back to the list of trips");
     }
@@ -130,15 +135,12 @@ internal static class Program
         switch (input)
         {
             case "Y":
-                Console.WriteLine("Yes");
                 context.Execute();
                 break;
             case "N":
-                Console.WriteLine("No");
                 Trip.AddTrip(newTrip);
                 return;
             case "quit":
-                Console.WriteLine("quit");
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -154,15 +156,12 @@ internal static class Program
         switch (input)
         {
             case "Y":
-                Console.WriteLine("Yes");
                 context.Execute();
                 break;
             case "N":
-                Console.WriteLine("No");
                 Trip.AddTrip(newTrip);
                 return;
             case "quit":
-                Console.WriteLine("quit");
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -180,15 +179,12 @@ internal static class Program
         switch (input)
         {
             case "Y":
-                Console.WriteLine("Yes");
                 context.Execute();
                 break;
             case "N":
-                Console.WriteLine("No");
                 Trip.AddTrip(newTrip);
                 return;
             case "quit":
-                Console.WriteLine("quit");
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -204,15 +200,12 @@ internal static class Program
             switch (input)
             {
                 case "Y":
-                    Console.WriteLine("Yes");
                     context.Execute();
                     break;
                 case "N":
-                    Console.WriteLine("No");
                     Trip.AddTrip(newTrip);
                     return;
                 case "quit":
-                    Console.WriteLine("quit");
                     Trip.AddTrip(newTrip);
                     return;
             }
@@ -227,15 +220,12 @@ internal static class Program
             switch (input)
             {
                 case "Y":
-                    Console.WriteLine("Yes");
                     context.Execute();
                     break;
                 case "N":
-                    Console.WriteLine("No");
                     Trip.AddTrip(newTrip);
                     return;
                 case "quit":
-                    Console.WriteLine("quit");
                     Trip.AddTrip(newTrip);
                     return;
             }
@@ -252,15 +242,12 @@ internal static class Program
         switch (input)
         {
             case "Y":
-                Console.WriteLine("Yes");
                 context.Execute();
                 break;
             case "N":
-                Console.WriteLine("No");
                 Trip.AddTrip(newTrip);
                 return;
             case "quit":
-                Console.WriteLine("quit");
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -276,15 +263,13 @@ internal static class Program
         switch (input)
         {
             case "Y":
-                Console.WriteLine("Yes");
                 context.Execute();
+                Trip.AddTrip(newTrip);
                 break;
             case "N":
-                Console.WriteLine("No");
                 Trip.AddTrip(newTrip);
                 return;
             case "quit":
-                Console.WriteLine("quit");
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -310,11 +295,10 @@ internal static class Program
         Console.WriteLine("****************************************");
         Console.WriteLine("Welcome to the Trip reservation System!!");
         Console.WriteLine("****************************************");
-        Console.WriteLine();
-        Console.WriteLine("");
         Console.WriteLine("•Agent 1");
         Console.WriteLine("•Agent 2");
         Console.WriteLine("•Agent 3");
+        Console.WriteLine();
         Console.WriteLine("Choose from the follow Agents to log in as, ");
         Console.WriteLine("just enter the number corresponding to the agent");
         var choice = Console.ReadLine();

@@ -4,6 +4,12 @@ public class Itinerary : ItinComponent
 {
     private Trip _trip;
 
+    public Itinerary(Trip trip)
+    {
+        _trip = trip;
+    }
+
+
     public void Output()
     {
         Console.WriteLine("itinerary by " + "" + "\n" + _trip.Note);

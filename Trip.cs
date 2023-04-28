@@ -5,7 +5,7 @@ namespace TripReservation;
 public class Trip
 {
     private static List<Trip>? _allTrips = new();
-    private static int _allId = 1;
+    private static int _allId = 0;
     private string? _destination;
     private ArrayList? _listOfPeople = new();
     private Payment? _payment;
@@ -14,7 +14,7 @@ public class Trip
     public Trip()
     {
         Status = Status.Create;
-        _allId++;
+        TripId = ++_allId;
     }
 
     public Trip(int time, string? destination, string? vehicle, int startTime, int startDate, int endDate,
