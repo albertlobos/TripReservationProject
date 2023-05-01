@@ -25,10 +25,26 @@ internal static class Program
         }
         
         /*
-         * After agent login, the flow will go to creating a new trip handled by the CreatingTripView() method
+         * After agent login, the flow will ask if you would like to create a New Trip. You enter Y if yes or N for no
          */
-        CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-        
+        Console.WriteLine("Would you like to create a brand new trip? Y/N");
+        while (true)
+        {
+            var newOrList = Console.ReadLine()?.ToUpper();
+            if (newOrList == "Y")
+            {
+                CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+                break;
+            }
+            if (newOrList == "N")
+            {
+                break;
+            }
+
+            Console.WriteLine("Wrong input, enter either Y or N");
+
+        }
+
         /*
          * This boolean variable quit will be set to true and exit the following do-while loop if the agent
          * decides to quit the program after listing the trips.
@@ -83,27 +99,23 @@ internal static class Program
      */
     private static void CreateItinerary(Trip trip)
     {
-        Console.WriteLine("Creating Itenerary");
+        Console.WriteLine("Creating The Itinerary ... ");
         ItineraryFactory.Get(trip);
+        Console.WriteLine();
         
-        //var Itinerary itin = new Itinerary();
-        ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-        //itinerary.Output(trip);
+        var itinerary = new Itinerary(trip);
         var itin = new ItinDecorator(itinerary);
         var itin2 = new ItinDestination(itin);
         var itin3 = new ItinBooking(itin2);
         var itin4 = new ItinPerson(itin3);
         var itin5 = new ItinBilling(itin4);
-        //var itin3 = new 
         itin5.Output(trip);
         
-       // itinerary.Output(); 
-        //ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
-        //tripItin.Output();
-
         Console.WriteLine();
-      //  ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-      //  itinerary.Output();
+        Console.WriteLine("Press any button to continue ...");
+        Console.ReadLine();
+
+        
     }
 
     /*
@@ -129,8 +141,8 @@ internal static class Program
             Console.WriteLine("You are in state: " + trip.Status);
             context.Execute();
             if (trip.Status == currentStatus) return;
-            Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?");
-
+            Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?  Y/N/quit");
+            Console.WriteLine();
             switch (Console.ReadLine())
             {
                 case "Y":

@@ -14,13 +14,17 @@ public class TripStateAddNote : TripState
         Console.WriteLine("*************************\n");
         do
         {
-            Console.WriteLine("Write the note you would like to add to the trip. or type \"quit\" to simply quit");
+            Console.WriteLine("Write the note you would like to add to the trip. or type \"quit\" to simply quit: ");
+            Console.WriteLine();
             var note = Console.ReadLine();
+            Console.WriteLine();
             if (note == "quit") return Status.AddNote;
 
             Console.WriteLine("Your note says:  \n" + note);
+            Console.WriteLine();
             Console.WriteLine("Do you want to continue adding this note? Y/N/quit");
             note = Console.ReadLine();
+            Console.WriteLine();
 
             switch (note)
             {
