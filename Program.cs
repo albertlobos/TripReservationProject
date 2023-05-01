@@ -54,7 +54,7 @@ internal static class Program
         
         /*
          * This do-while loop will list the agent's trips, and then ask for an input with Y meaning you want to
-         * continue wokring on a trip, and N being you want to quit the program. You enter new if you would like to
+         * continue working on a trip, and N being you want to quit the program. You enter new if you would like to
          * create a brand new trip which will take you through the CreateTripView() method.
          */
         do

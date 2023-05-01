@@ -1,5 +1,8 @@
 namespace TripReservation;
 
+/*
+ * This is the person class. This person class is added into the Person list in Trip class
+ */
 public class Person
 {
     private string? _firstName;

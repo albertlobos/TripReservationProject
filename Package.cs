@@ -1,5 +1,8 @@
 namespace TripReservation;
 
+/*
+ * This is the package class that implements the singleton pattern
+ */
 public class Package
 {
     private static Package? _pack;

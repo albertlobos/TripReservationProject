@@ -1,5 +1,8 @@
 namespace TripReservation;
 
+/*
+ * This is the People clas that will be implemented with the Singleton Pattern.
+ */
 public class People
 {
     private static People? _people;
