@@ -1,21 +1,20 @@
 using TripReservation.ItineraryFiles;
 
-namespace TripReservation.ItineraryFiles;
+namespace TripReservation.Itinerary;
 
-public class ItinDestination : ItinComponent
+public class ItinDestination : ItinDecorator
 {
-    //private readonly string Destinationdecor = "\nDestination: " + _trip.Destination + "\n";
-    protected readonly ItinComponent itin;
+    private readonly string Destinationdecor = "\nDestination: " + _trip.Destination + "\n";
 
-    public ItinDestination(ItineraryFiles.ItinComponent itin)
+
+    public ItinDestination(ItineraryFiles.ItinComponent itin) : base(itin)
     {
-        this.itin = itin;
     }
 
 
-    public void Output(Trip trip)
+    public void Output()
     {
-        this.itin.Output(trip);
-        Console.WriteLine("****************************************\nDestination: " + trip.Destination + "\n");
+        base.Output();
+        Console.WriteLine(Destinationdecor);
     }
 }

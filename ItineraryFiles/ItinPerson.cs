@@ -1,26 +1,23 @@
 namespace TripReservation.ItineraryFiles;
 
-public class ItinPerson : ItinComponent
+public class ItinPerson : ItinDecorator
 {
     public int count = 0;
     //string Persondecor = "";
-    protected readonly ItinComponent itin;
 
 
-    public ItinPerson(ItineraryFiles.ItinComponent itin)
+    public ItinPerson(ItineraryFiles.ItinComponent itin) : base(itin)
     {
-        this.itin = itin;
     }
 
 
-    public void Output(Trip trip)
+    public void Output()
     {
-        
-        this.itin.Output(trip);
-        Console.WriteLine("****************************************\n" + trip.ListOfPeople.Count + " Travelers:");
-        while (count < trip.ListOfPeople.Count)
+        base.Output();
+        Console.WriteLine("\n" + _trip.ListOfPeople.Count + "Travelers: \n");
+        while (count < _trip.ListOfPeople.Count)
         {
-            Console.WriteLine(count + ": " + trip.ListOfPeople[count]);
+            Console.WriteLine(count + ": " + _trip.ListOfPeople[count]);
             count++;
         }
     }

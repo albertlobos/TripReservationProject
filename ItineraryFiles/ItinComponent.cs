@@ -2,5 +2,5 @@ namespace TripReservation.ItineraryFiles;
 
 public interface ItinComponent
 {
-    public void Output(Trip trip);
+    public void Output();
 }
