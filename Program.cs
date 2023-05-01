@@ -73,7 +73,14 @@ internal static class Program
                 case "Y":
                 {
                     Console.WriteLine("Which trip would you like to work on?");
-                    var choice = Convert.ToInt32(Console.ReadLine());
+                    int choice;
+                    while (true)
+                    {
+                        choice = Convert.ToInt32(Console.ReadLine());
+                        if(choice >= 1 && choice < Trip.AllTrips.Count) break;
+                        Console.WriteLine("Enter a valid choice from the list");
+                    }
+                    
                     ContinueTrip(Trip.AllTrips?[choice - 1]);
         
                     //Gotta put stuff here

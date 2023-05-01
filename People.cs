@@ -29,33 +29,3 @@ public class People
         Console.Out.Write(_name);
     }
 }
-
-// public class People {
-// 	int guests = 0;
-// 	String name = "";
-// 	public static People people = null;
-// 	public static synchronized People getInstance() 
-// 	{
-// 		if(people == null) 
-// 		{
-// 			people = new People();
-// 		}
-// 		return people;
-// 	}
-// 	public void guests(int guest) 
-// 	{
-// 		guests = guest;
-// 	}
-// 	public void setName(String n) 
-// 	{
-// 		name = n;
-// 	}
-// 	public void printName()
-// 	{
-// 		System.out.print(name);
-// 	}
-// 	public void getName()
-// 	{
-// 		
-// 	}
-// }
