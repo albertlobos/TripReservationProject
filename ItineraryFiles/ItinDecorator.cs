@@ -6,7 +6,7 @@ public class ItinDecorator : ItinComponent
     private string componentDecor = "";
     private ItinComponent itinerary;
 
-    protected ItinDecorator(ItinComponent itin)
+    public ItinDecorator(ItinComponent itin)
     {
         this.itinerary = itin;
     }

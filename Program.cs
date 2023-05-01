@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 using TripReservation.Itinerary;
+//using TripReservation.Itinerary;
 using TripReservation.ItineraryFiles;
 using TripReservation.Json_XML;
 
@@ -11,21 +12,6 @@ internal static class Program
 {
     private static void Main()
     {
-        /*
-        Trip trip = new Trip()
-        {
-            Destination = "los Angeles",
-            Amount = (decimal?)12.32,
-            Vehicle = "Volkswagon"
-        };
-        
-        Trip.AddTrip(trip);
-
-        var serializer = new XmlSerializer(typeof(List<Trip>));
-        Stream stream = new FileStream(@"/Users/nelso/Desktop/Spring2023/TripReservation/Json_XML/XML_TripsSaved.xml",
-            FileMode.Append);
-        serializer.Serialize(stream, Trip.AllTrips);
-        */
         var agentLogIn = AgentLogIn();
         switch (agentLogIn)
         {
@@ -81,22 +67,39 @@ internal static class Program
 
     }
 
-    //This will handle creating the itinerary
+    /*
+     * CreateItinerary will handled creating the itinerary if the trip has a status of complete.
+     * It will make use of the Decorator and Factory
+     */
     private static void CreateItinerary(Trip trip)
     {
-        Console.WriteLine("I the creat itinerarty method");
+        Console.WriteLine("Creating Itenerary");
         ItineraryFactory.Get(trip);
-       // ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
+        
+        //var Itinerary itin = new Itinerary();
+        ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
+        //itinerary.Output(trip);
+        var itin = new ItinDecorator(itinerary);
+        var itin2 = new ItinDestination(itin);
+        var itin3 = new ItinBooking(itin2);
+        var itin4 = new ItinPerson(itin3);
+        var itin5 = new ItinBilling(itin4);
+        //var itin3 = new 
+        itin5.Output(trip);
+        
        // itinerary.Output(); 
-        ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
-        tripItin.Output();
+        //ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
+        //tripItin.Output();
 
         Console.WriteLine();
       //  ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
       //  itinerary.Output();
     }
 
-    //This will take you through the creating a trip from where ever it ended from to finish
+    /*
+     * This will take you through creating a trip from where you left off. It will also create the itinerary if it
+     * sees that it has a status of complete.
+     */
     private static void ContinueTrip(Trip trip)
     {
         var context = new TripContext(trip);
@@ -134,7 +137,11 @@ internal static class Program
         Console.WriteLine();
     }
 
-    //This will take you through the creating a trip from new to finish
+    /*
+     * This will take you through creating the very first trip as soon as you log into an agent. The UI flow
+     * goes from logging in to automatically creating a new trip. CreatingTripView handles this first creating new trip.
+     * After you quit that, control will go to ContinueTrip() method.
+     */
     private static void CreatingTripView(int num, Agent agent)
     {
         Console.WriteLine();
@@ -149,7 +156,7 @@ internal static class Program
         var newTrip = new Trip()
         {
             StartTime = startTime,
-            StartDate = endDate,
+            StartDate = startDate,
             EndDate = endDate
         };
         var context = new TripContext(newTrip);
@@ -309,7 +316,9 @@ internal static class Program
     }
 
 
-    //This is the ListAgentTripsView which will print out all the trips
+    /*
+     * This will list all trh trips saved to the agent.
+     */
     private static void ListAgentTripsView()
     {
         Console.WriteLine("This is Agents Trips Saved");
@@ -318,7 +327,10 @@ internal static class Program
         Console.WriteLine("**************************");
     }
 
-    //This is the first view where the agent will log in
+    /*
+     * This handles the agent log in. The agent is number 1, 2, and 3. You enter the number corresponding to the agent
+     * you want to log in as.
+     */
     private static int AgentLogIn()
     {
         Console.WriteLine("****************************************");
@@ -353,30 +365,5 @@ internal static class Program
         } while (true);
     }
 
-    //This was to practice
-    private static void QuickMenu()
-    {
-        var quit = false;
-        var newTrip = new Trip();
-        Trip.AddTrip(newTrip);
-        var context = new TripContext(newTrip);
 
-        do
-        {
-            var jsonString = JsonSerializer.Serialize(newTrip);
-            Console.WriteLine("Current Trip in Json: ");
-            Console.WriteLine(jsonString);
-            Console.WriteLine();
-            Console.WriteLine();
-
-
-            Console.WriteLine("Continue creating trip? Y/N");
-            var answer = Console.ReadLine();
-            Console.WriteLine();
-            if (answer == "Y") context.Execute();
-            else quit = true;
-        } while (quit == false);
-
-        Console.WriteLine("Done with this");
-    }
 }
