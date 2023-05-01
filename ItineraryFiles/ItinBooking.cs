@@ -4,7 +4,7 @@ namespace TripReservation.ItineraryFiles;
 
 public class ItinBooking : ItinDecorator
 {
-    private readonly string Bookingdecor =
+    private readonly string _bookingdecor =
         "\nBooking Time was: " + _trip.StartDate + "\nEnd time is: " + _trip.EndDate + "\n";
 
 
@@ -16,6 +16,6 @@ public class ItinBooking : ItinDecorator
     public void Output()
     {
         base.Output();
-        Console.WriteLine(Bookingdecor);
+        Console.WriteLine(_bookingdecor);
     }
 }

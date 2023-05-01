@@ -27,7 +27,7 @@ public class TripStateAddDestinations : TripState
             switch (destination)
             {
                 case "quit":
-                    Trip.AddTrip(context.Trip);
+                    Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                     return Status.AddDestinations;
                 case "1":
                     context.Trip.Amount = (decimal?)(543.99 * context.Trip.ListOfPeople!.Count);
@@ -56,7 +56,7 @@ public class TripStateAddDestinations : TripState
             switch (answer)
             {
                 case "quit":
-                    Trip.AddTrip(context.Trip);
+                    Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                     return Status.AddDestinations;
                 case "N":
                     done = true;

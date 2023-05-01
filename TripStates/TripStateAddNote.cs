@@ -25,7 +25,7 @@ public class TripStateAddNote : TripState
             switch (note)
             {
                 case "quit":
-                    Trip.AddTrip(context.Trip);
+                    Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                     return Status.AddNote;
                 case "Y":
                     context.Trip.Note = note;

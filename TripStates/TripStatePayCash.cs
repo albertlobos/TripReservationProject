@@ -22,7 +22,7 @@ public class TripStatePayCash : TripState
 
             if (amountPaying == "quit")
             {
-                Trip.AddTrip(context.Trip);
+                Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.PayCash;
             }
 

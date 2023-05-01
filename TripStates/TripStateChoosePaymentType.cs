@@ -26,7 +26,7 @@ public class TripStateChoosePaymentType : TripState
                     context.State = new TripStatePayCheck();
                     return Status.PayCheck;
                 case "quit":
-                    Trip.AddTrip(context.Trip);
+                    Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                     return Status.ChoosePayment;
                 default:
                     Console.WriteLine("Wrong input, Try Again");

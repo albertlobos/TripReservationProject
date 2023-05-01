@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using System.Xml.Serialization;
+using TripReservation.Itinerary;
 using TripReservation.ItineraryFiles;
 using TripReservation.Json_XML;
 
@@ -47,7 +47,7 @@ internal static class Program
                 {
                     Console.WriteLine("Which trip would you like to work on?");
                     var choice = Convert.ToInt32(Console.ReadLine());
-                    ContinueTrip(Trip.AllTrips[choice - 1]);
+                    ContinueTrip(Trip.AllTrips?[choice - 1]);
         
                     //Gotta put stuff here
                     break;
@@ -73,7 +73,7 @@ internal static class Program
         Console.WriteLine("I the creat itinerarty method");
         ItineraryFactory.Get(trip);
        // ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-     //   itinerary.Output(); 
+       // itinerary.Output(); 
         ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
         tripItin.Output();
 

@@ -19,7 +19,7 @@ public class TripStateAddTravelers : TripState
             var firstName = Console.ReadLine();
             if (firstName == "quit")
             {
-                Trip.AddTrip(context.Trip);
+                Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
@@ -27,7 +27,7 @@ public class TripStateAddTravelers : TripState
             var lastName = Console.ReadLine();
             if (lastName == "quit")
             {
-                Trip.AddTrip(context.Trip);
+                Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
@@ -35,7 +35,7 @@ public class TripStateAddTravelers : TripState
             var phoneNumber = Console.ReadLine();
             if (phoneNumber == "quit")
             {
-                Trip.AddTrip(context.Trip);
+                Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
@@ -43,7 +43,7 @@ public class TripStateAddTravelers : TripState
             var ageString = Console.ReadLine();
             if (ageString == "quit")
             {
-                Trip.AddTrip(context.Trip);
+                Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
