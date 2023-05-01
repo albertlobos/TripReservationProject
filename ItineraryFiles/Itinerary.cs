@@ -14,7 +14,7 @@ public class Itinerary : ItinComponent
         throw new NotImplementedException();
     }
     
-    public void Output()
+    public void Output(Trip trip)
     {
         Console.WriteLine("itinerary by " + "" + "\n" + _trip.Note);
     }
