@@ -73,7 +73,10 @@ internal static class Program
         Console.WriteLine("I the creat itinerarty method");
         ItineraryFactory.Get(trip);
        // ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-     //   itinerary.Output();
+     //   itinerary.Output(); 
+        ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
+        tripItin.Output();
+
         Console.WriteLine();
       //  ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
       //  itinerary.Output();

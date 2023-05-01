@@ -9,13 +9,16 @@ public class Itinerary : ItinComponent
         _trip = trip;
     }
 
-
+    protected Itinerary()
+    {
+        throw new NotImplementedException();
+    }
+    
     public void Output()
     {
         Console.WriteLine("itinerary by " + "" + "\n" + _trip.Note);
     }
 
-    
     public Trip Trip
     {
         get => _trip;

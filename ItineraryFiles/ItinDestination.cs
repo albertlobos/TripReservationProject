@@ -7,7 +7,7 @@ public class ItinDestination : ItinDecorator
     private readonly string Destinationdecor = "\nDestination: " + _trip.Destination + "\n";
 
 
-    public ItinDestination(ItineraryFiles.Itinerary itin) : base(itin)
+    public ItinDestination(ItineraryFiles.ItinComponent itin) : base(itin)
     {
     }
 

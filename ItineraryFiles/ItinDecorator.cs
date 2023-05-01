@@ -1,14 +1,14 @@
 namespace TripReservation.ItineraryFiles;
 
-public class ItinDecorator : Itinerary
+public class ItinDecorator : ItinComponent
 {
     protected static Trip _trip;
     private string componentDecor = "";
-    private Itinerary itinerary;
+    private ItinComponent itinerary;
 
-    protected ItinDecorator(Itinerary itin) : base(_trip)
+    protected ItinDecorator(ItinComponent itin)
     {
-        itinerary = itin;
+        this.itinerary = itin;
     }
 
     public void GetTrip(Trip trip)
@@ -23,6 +23,6 @@ public class ItinDecorator : Itinerary
         //componentDecor += ItinDestination.destDecor();
         //componentDecor += ItinBooking.bookDecor();
 
-        itinerary.Output();
+        this.itinerary.Output();
     }
 }

@@ -6,7 +6,7 @@ public class ItinPerson : ItinDecorator
     //string Persondecor = "";
 
 
-    public ItinPerson(ItineraryFiles.Itinerary itin) : base(itin)
+    public ItinPerson(ItineraryFiles.ItinComponent itin) : base(itin)
     {
     }
 
@@ -15,6 +15,10 @@ public class ItinPerson : ItinDecorator
     {
         base.Output();
         Console.WriteLine("\n" + _trip.ListOfPeople.Count + "Travelers: \n");
-        while (count < _trip.ListOfPeople.Count) Console.WriteLine(count + ": " + _trip.ListOfPeople[count]);
+        while (count < _trip.ListOfPeople.Count)
+        {
+            Console.WriteLine(count + ": " + _trip.ListOfPeople[count]);
+            count++;
+        }
     }
 }
