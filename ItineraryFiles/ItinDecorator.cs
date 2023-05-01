@@ -6,7 +6,7 @@ public class ItinDecorator : ItinComponent
     private string componentDecor = "";
     private ItinComponent itinerary;
 
-    protected ItinDecorator(ItinComponent itin)
+    public ItinDecorator(ItinComponent itin)
     {
         this.itinerary = itin;
     }
@@ -16,13 +16,13 @@ public class ItinDecorator : ItinComponent
         _trip = trip;
     }
 
-    public void Output()
+    public void Output(Trip trip)
     {
         //componentDecor = "Itinerarary by " ;
 
         //componentDecor += ItinDestination.destDecor();
         //componentDecor += ItinBooking.bookDecor();
 
-        this.itinerary.Output();
+        this.itinerary.Output(trip);
     }
 }
