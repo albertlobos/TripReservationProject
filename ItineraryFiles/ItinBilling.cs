@@ -1,20 +1,21 @@
-using TripReservation.Itinerary;
+using TripReservation.ItineraryFiles;
 
 namespace TripReservation.ItineraryFiles;
 
-public class ItinBilling : ItinDecorator
+public class ItinBilling : ItinComponent
 {
-    private readonly string Billingdecor = "\nTotal: " + _trip.Amount + "\n";
+    
+    protected readonly ItinComponent itin;
 
-
-    public ItinBilling(ItineraryFiles.ItinComponent itin) : base(itin)
+    public ItinBilling(ItineraryFiles.ItinComponent itin)
     {
+        this.itin = itin;
     }
 
 
-    public void Output()
+    public void Output(Trip trip)
     {
-        base.Output();
-        Console.WriteLine(Billingdecor);
+        this.itin.Output(trip);
+        Console.WriteLine("****************************************\nTotal Paid: " + trip.Amount + " in  " + trip.Payment + "\n");
     }
 }

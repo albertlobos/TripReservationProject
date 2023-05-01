@@ -16,13 +16,13 @@ public class ItinDecorator : ItinComponent
         _trip = trip;
     }
 
-    public void Output()
+    public void Output(Trip trip)
     {
         //componentDecor = "Itinerarary by " ;
 
         //componentDecor += ItinDestination.destDecor();
         //componentDecor += ItinBooking.bookDecor();
 
-        this.itinerary.Output();
+        this.itinerary.Output(trip);
     }
 }
