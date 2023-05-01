@@ -9,62 +9,69 @@ internal static class Program
 {
     private static void Main()
     {
+        var newTrip = new Trip()
+        {
+            Destination = "LA",
+            Amount = (decimal?)123.23,
+            Vehicle = "Volks"
+        };
+        
+        Trip.AddTrip(newTrip);
 
- 
-        
-        var agentLogIn = AgentLogIn();
-        switch (agentLogIn)
-        {
-            case 1:
-                Reader.JsonLoader();
-                break;
-            case 2:
-                Reader.JsonLoader();
-                break;
-            case 3:
-                Reader.JsonLoader();
-                break;
-        }
-        
-        CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-        
-        var quit = false;
-        
-        do
-        {
-            Writer.JsonSaveTrip();
-            ListAgentTripsView();
-            Console.WriteLine();
-            Console.WriteLine();
-            //var num = Console.ReadLine();
-            //var input = Convert.ToInt32(num);
-            Console.WriteLine("Would you like to work on one of these trips or start a new one?");
-            Console.WriteLine("Type in either: Y/N/new");
-            var answer = Console.ReadLine();
-            switch (answer)
-            {
-                case "Y":
-                {
-                    Console.WriteLine("Which trip would you like to work on?");
-                    var choice = Convert.ToInt32(Console.ReadLine());
-                    ContinueTrip(Trip.AllTrips?[choice - 1]);
-        
-                    //Gotta put stuff here
-                    break;
-                }
-                case "new":
-                {
-                    CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-                    Writer.JsonSaveTrip();
-                    break;
-                }
-                case "N":
-                    quit = true;
-                    Writer.JsonSaveTrip();
-                    break;
-            }
-        } while (quit == false);
-        
+        Writer.JsonSaveTrip();
+        // var agentLogIn = AgentLogIn();
+        // switch (agentLogIn)
+        // {
+        //     case 1:
+        //         Reader.JsonLoader();
+        //         break;
+        //     case 2:
+        //         Reader.JsonLoader();
+        //         break;
+        //     case 3:
+        //         Reader.JsonLoader();
+        //         break;
+        // }
+        //
+        // CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+        //
+        // var quit = false;
+        //
+        // do
+        // {
+        //     Writer.JsonSaveTrip();
+        //     ListAgentTripsView();
+        //     Console.WriteLine();
+        //     Console.WriteLine();
+        //     //var num = Console.ReadLine();
+        //     //var input = Convert.ToInt32(num);
+        //     Console.WriteLine("Would you like to work on one of these trips or start a new one?");
+        //     Console.WriteLine("Type in either: Y/N/new");
+        //     var answer = Console.ReadLine();
+        //     switch (answer)
+        //     {
+        //         case "Y":
+        //         {
+        //             Console.WriteLine("Which trip would you like to work on?");
+        //             var choice = Convert.ToInt32(Console.ReadLine());
+        //             ContinueTrip(Trip.AllTrips?[choice - 1]);
+        //
+        //             //Gotta put stuff here
+        //             break;
+        //         }
+        //         case "new":
+        //         {
+        //             CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+        //             Writer.JsonSaveTrip();
+        //             break;
+        //         }
+        //         case "N":
+        //             quit = true;
+        //             Writer.JsonSaveTrip();
+        //             break;
+        //     }
+        // } while (quit == false);
+
     }
 
     //This will handle creating the itinerary
