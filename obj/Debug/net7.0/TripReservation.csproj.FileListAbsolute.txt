@@ -13,3 +13,5 @@
 /Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.pdb
 /Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.genruntimeconfig.cache
 /Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/ref/TripReservation.dll
+/Users/nelso/Desktop/Spring2023/TripReservation/bin/Debug/net7.0/nunit.framework.dll
+/Users/nelso/Desktop/Spring2023/TripReservation/obj/Debug/net7.0/TripReservation.csproj.CopyComplete

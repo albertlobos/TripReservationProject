@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ZFeGZc5J4VL+hIGEa5YLJ0gsJOtzD4B6JJ1Tn8sOUT8vFykGoxWLh0Jab2HeFbWv6esAhw82gthcZ4leBrV9hQ==",
+  "dgSpecHash": "4eZyVvNAiFMHd0NpBsf/AhSYG2/Ua8cgtMvCG/JL3nnZVcZjVdfLa/UbFFp9XDzUftnN+WYP2W3DEyv1MmKivQ==",
   "success": true,
   "projectFilePath": "/Users/nelso/Desktop/Spring2023/TripReservation/TripReservation.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/nelso/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/nelso/.nuget/packages/netstandard.library/2.0.0/netstandard.library.2.0.0.nupkg.sha512",
+    "/Users/nelso/.nuget/packages/nunit/3.13.3/nunit.3.13.3.nupkg.sha512"
+  ],
   "logs": []
 }

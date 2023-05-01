@@ -1,4 +1,6 @@
 ﻿using System.Text.Json;
+using System.Xml;
+using System.Xml.Serialization;
 using TripReservation.Itinerary;
 using TripReservation.ItineraryFiles;
 using TripReservation.Json_XML;
@@ -9,68 +11,73 @@ internal static class Program
 {
     private static void Main()
     {
-        var newTrip = new Trip()
+        /*
+        Trip trip = new Trip()
         {
-            Destination = "LA",
-            Amount = (decimal?)123.23,
-            Vehicle = "Volks"
+            Destination = "los Angeles",
+            Amount = (decimal?)12.32,
+            Vehicle = "Volkswagon"
         };
         
-        Trip.AddTrip(newTrip);
+        Trip.AddTrip(trip);
 
-        Writer.JsonSaveTrip();
-        // var agentLogIn = AgentLogIn();
-        // switch (agentLogIn)
-        // {
-        //     case 1:
-        //         Reader.JsonLoader();
-        //         break;
-        //     case 2:
-        //         Reader.JsonLoader();
-        //         break;
-        //     case 3:
-        //         Reader.JsonLoader();
-        //         break;
-        // }
-        //
-        // CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-        //
-        // var quit = false;
-        //
-        // do
-        // {
-        //     Writer.JsonSaveTrip();
-        //     ListAgentTripsView();
-        //     Console.WriteLine();
-        //     Console.WriteLine();
-        //     //var num = Console.ReadLine();
-        //     //var input = Convert.ToInt32(num);
-        //     Console.WriteLine("Would you like to work on one of these trips or start a new one?");
-        //     Console.WriteLine("Type in either: Y/N/new");
-        //     var answer = Console.ReadLine();
-        //     switch (answer)
-        //     {
-        //         case "Y":
-        //         {
-        //             Console.WriteLine("Which trip would you like to work on?");
-        //             var choice = Convert.ToInt32(Console.ReadLine());
-        //             ContinueTrip(Trip.AllTrips?[choice - 1]);
-        //
-        //             //Gotta put stuff here
-        //             break;
-        //         }
-        //         case "new":
-        //         {
-        //             CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-        //             Writer.JsonSaveTrip();
-        //             break;
-        //         }
-        //         case "N":
-        //             quit = true;
-        //             Writer.JsonSaveTrip();
-        //             break;
-        //     }
-        // } while (quit == false);
+        var serializer = new XmlSerializer(typeof(List<Trip>));
+        Stream stream = new FileStream(@"/Users/nelso/Desktop/Spring2023/TripReservation/Json_XML/XML_TripsSaved.xml",
+            FileMode.Append);
+        serializer.Serialize(stream, Trip.AllTrips);
+        */
+        var agentLogIn = AgentLogIn();
+        switch (agentLogIn)
+        {
+            case 1:
+                Reader.JsonLoader();
+                break;
+            case 2:
+                Reader.JsonLoader();
+                break;
+            case 3:
+                Reader.JsonLoader();
+                break;
+        }
+        
+        CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+        
+        var quit = false;
+        
+        do
+        {
+            Writer.JsonSaveTrip();
+            ListAgentTripsView();
+            Console.WriteLine();
+            Console.WriteLine();
+            //var num = Console.ReadLine();
+            //var input = Convert.ToInt32(num);
+            Console.WriteLine("Would you like to work on one of these trips or start a new one?");
+            Console.WriteLine("Type in either: Y/N/new");
+            var answer = Console.ReadLine();
+            switch (answer)
+            {
+                case "Y":
+                {
+                    Console.WriteLine("Which trip would you like to work on?");
+                    var choice = Convert.ToInt32(Console.ReadLine());
+                    ContinueTrip(Trip.AllTrips?[choice - 1]);
+        
+                    //Gotta put stuff here
+                    break;
+                }
+                case "new":
+                {
+                    CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+                    Writer.JsonSaveTrip();
+                    break;
+                }
+                case "N":
+                    quit = true;
+                    Writer.JsonSaveTrip();
+                    break;
+            }
+        } while (quit == false);
 
     }
 
