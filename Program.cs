@@ -117,6 +117,7 @@ internal static class Program
         Trip.AllTrips.Insert(trip.TripId - 1, trip);
         Console.WriteLine("You have completed the trip!");
         Console.WriteLine("We will take you back to the list of trips");
+        Console.WriteLine();
     }
 
     //This will take you through the creating a trip from new to finish
@@ -125,7 +126,18 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("Hello Agent #" + num + " !!!");
         Console.WriteLine("Creating a new Trip ....");
-        var newTrip = new Trip();
+        Console.WriteLine("When will the start day of the trip be?");
+        var startDate = Console.ReadLine();
+        Console.WriteLine("When will the end day of the trip be?");
+        var endDate = Console.ReadLine();
+        Console.WriteLine("What time ill the trip start?");
+        var startTime = Console.ReadLine();
+        var newTrip = new Trip()
+        {
+            StartTime = startTime,
+            StartDate = endDate,
+            EndDate = endDate
+        };
         var context = new TripContext(newTrip);
         context.Execute();
         Console.WriteLine();
