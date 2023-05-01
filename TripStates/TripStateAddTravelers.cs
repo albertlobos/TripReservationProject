@@ -56,17 +56,27 @@ public class TripStateAddTravelers : TripState
             var newPerson = new Person(firstName, lastName, phoneNumber, age);
             context.Trip.ListOfPeople!.Add(newPerson);
             Console.WriteLine();
-            Console.WriteLine("Do you want to add another traveler?");
-            Console.WriteLine("Enter Y for yes and N for no or \"quit\" to quit");
-            var answer = Console.ReadLine();
-            switch (answer)
+            while (true)
             {
-                case "quit":
+                Console.WriteLine("Do you want to add another traveler?");
+                Console.WriteLine("Enter Y for yes and N for no or \"quit\" to quit");
+                var answer = Console.ReadLine()?.ToUpper();
+                if (answer == "QUIT")
                     return Status.AddTravelers;
-                case "N":
+                if (answer == "N")
+                {
                     done = true;
                     break;
+                }
+                if (answer == "Y")
+                {
+                    break;
+                }
+
+                Console.WriteLine("Enter either Y/N/quit");
+                Console.WriteLine();
             }
+            
         } while (done == false);
 
         context.State = new TripStateAddDestinations();

@@ -77,7 +77,7 @@ internal static class Program
                     while (true)
                     {
                         choice = Convert.ToInt32(Console.ReadLine());
-                        if(choice >= 1 && choice < Trip.AllTrips.Count) break;
+                        if(choice >= 1 && choice <= Trip.AllTrips.Count) break;
                         Console.WriteLine("Enter a valid choice from the list");
                     }
                     
