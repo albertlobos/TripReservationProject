@@ -7,6 +7,9 @@ internal static class Program
 {
     private static void Main()
     {
+        /*
+         * Main will go through the first UI flow, Agent Login
+         */
         var agentLogIn = AgentLogIn();
         switch (agentLogIn)
         {
@@ -21,10 +24,22 @@ internal static class Program
                 break;
         }
         
+        /*
+         * After agent login, the flow will go to creating a new trip handled by the CreatingTripView() method
+         */
         CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
         
+        /*
+         * This boolean variable quit will be set to true and exit the following do-while loop if the agent
+         * decides to quit the program after listing the trips.
+         */
         var quit = false;
         
+        /*
+         * This do-while loop will list the agent's trips, and then ask for an input with Y meaning you want to
+         * continue wokring on a trip, and N being you want to quit the program. You enter new if you would like to
+         * create a brand new trip which will take you through the CreateTripView() method.
+         */
         do
         {
             Writer.JsonSaveTrip();
