@@ -1,26 +1,20 @@
+using TripReservation.Itinerary;
+
 namespace TripReservation.ItineraryFiles;
 
-public class ItineraryFactory
+public class ItinBilling : ItinDecorator
 {
-    private Trip _trip;
-    //private Trip _state;
+    private readonly string Billingdecor = "\nTotal: " + _trip.Amount + "\n";
 
-    public static void Get(Trip trip)
+
+    public ItinBilling(ItineraryFiles.ItinComponent itin) : base(itin)
     {
-
-        Console.WriteLine(TripCanProduceItinerary(trip)
-            ? "Itinerary is ready!"
-            : "Trip Status is not complete!");
     }
 
-    public Trip Trip
-    {
-        get => _trip;
-        set => _trip = value ?? throw new ArgumentNullException(nameof(value));
-    }
 
-    private static bool TripCanProduceItinerary(Trip trip)
+    public void Output()
     {
-        return trip.Status == Status.Complete;
+        base.Output();
+        Console.WriteLine(Billingdecor);
     }
 }

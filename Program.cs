@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
-//using TripReservation.Itinerary;
+using TripReservation.Itinerary;
 using TripReservation.ItineraryFiles;
 using TripReservation.Json_XML;
 
@@ -84,23 +84,12 @@ internal static class Program
     //This will handle creating the itinerary
     private static void CreateItinerary(Trip trip)
     {
-        Console.WriteLine("Creating Itenerary");
+        Console.WriteLine("I the creat itinerarty method");
         ItineraryFactory.Get(trip);
-        
-        //var Itinerary itin = new Itinerary();
-        ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-        //itinerary.Output(trip);
-        var itin = new ItinDecorator(itinerary);
-        var itin2 = new ItinDestination(itin);
-        var itin3 = new ItinBooking(itin2);
-        var itin4 = new ItinPerson(itin3);
-        var itin5 = new ItinBilling(itin4);
-        //var itin3 = new 
-        itin5.Output(trip);
-        
+       // ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
        // itinerary.Output(); 
-        //ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
-        //tripItin.Output();
+        ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
+        tripItin.Output();
 
         Console.WriteLine();
       //  ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
@@ -160,7 +149,7 @@ internal static class Program
         var newTrip = new Trip()
         {
             StartTime = startTime,
-            StartDate = startDate,
+            StartDate = endDate,
             EndDate = endDate
         };
         var context = new TripContext(newTrip);

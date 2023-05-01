@@ -1,23 +1,21 @@
-using TripReservation.ItineraryFiles;
+using TripReservation.Itinerary;
 
 namespace TripReservation.ItineraryFiles;
 
-public class ItinBooking : ItinComponent
+public class ItinBooking : ItinDecorator
 {
-    
-    protected readonly ItinComponent itin;
+    private readonly string _bookingdecor =
+        "\nBooking Time was: " + _trip.StartDate + "\nEnd time is: " + _trip.EndDate + "\n";
 
-    public ItinBooking(ItineraryFiles.ItinComponent itin)
+
+    public ItinBooking(ItineraryFiles.ItinComponent itin) : base(itin)
     {
-        this.itin = itin;
     }
 
 
-    public void Output(Trip trip)
+    public void Output()
     {
-        this.itin.Output(trip);
-        Console.WriteLine( "****************************************\nBooking Time is: " + trip.StartDate + "\nEnd time is: " + trip.EndDate + "\n");
+        base.Output();
+        Console.WriteLine(_bookingdecor);
     }
-
-    
 }
