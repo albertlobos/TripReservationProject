@@ -208,22 +208,33 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("A new Trip has been created, would you like to continue creating the trip?");
         Console.WriteLine("Enter Y for yes or N for no, you may also quit now.");
-        var input = Console.ReadLine();
-        Console.WriteLine();
+        string? input;
 
 
         //This will trigger TripStateAddTravelers
-        switch (input?.ToUpper())
+        while (true)
         {
-            case "Y":
+            input = Console.ReadLine();
+            Console.WriteLine();
+            
+            if (input?.ToUpper() == "Y")
+            {
                 context.Execute();
                 break;
-            case "N":
-                Trip.AddTrip(newTrip);
-                return;
-            case "QUIT":
-                Trip.AddTrip(newTrip);
-                return;
+            }
+            switch (input?.ToUpper())
+            {
+                case "N":
+                    Trip.AddTrip(newTrip);
+                    return;
+                case "QUIT":
+                    Trip.AddTrip(newTrip);
+                    return;
+                default:
+                    Console.WriteLine("Use a valid input, either Y/N/quit");
+                    Console.WriteLine();
+                    break;
+            }
         }
 
         if (context.Trip.Status == Status.AddTravelers) return;
@@ -232,19 +243,30 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("You have added travelers to your trip!");
         Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
-        input = Console.ReadLine();
-
-        switch (input)
+        
+        while (true)
         {
-            case "Y":
+            input = Console.ReadLine();
+            Console.WriteLine();
+            
+            if (input?.ToUpper() == "Y")
+            {
                 context.Execute();
                 break;
-            case "N":
-                Trip.AddTrip(newTrip);
-                return;
-            case "quit":
-                Trip.AddTrip(newTrip);
-                return;
+            }
+            switch (input?.ToUpper())
+            {
+                case "N":
+                    Trip.AddTrip(newTrip);
+                    return;
+                case "QUIT":
+                    Trip.AddTrip(newTrip);
+                    return;
+                default:
+                    Console.WriteLine("Use a valid input, either Y/N/quit");
+                    Console.WriteLine();
+                    break;
+            }
         }
 
         if (context.Trip.Status == Status.AddDestinations) return;
@@ -255,19 +277,29 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("You have added Destinations to your trip!");
         Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
-        input = Console.ReadLine();
-
-        switch (input)
+        while (true)
         {
-            case "Y":
+            input = Console.ReadLine();
+            Console.WriteLine();
+            
+            if (input?.ToUpper() == "Y")
+            {
                 context.Execute();
                 break;
-            case "N":
-                Trip.AddTrip(newTrip);
-                return;
-            case "quit":
-                Trip.AddTrip(newTrip);
-                return;
+            }
+            switch (input?.ToUpper())
+            {
+                case "N":
+                    Trip.AddTrip(newTrip);
+                    return;
+                case "QUIT":
+                    Trip.AddTrip(newTrip);
+                    return;
+                default:
+                    Console.WriteLine("Use a valid input, either Y/N/quit");
+                    Console.WriteLine();
+                    break;
+            }
         }
 
         if (context.Trip.Status == Status.ChoosePayment) return;
@@ -277,18 +309,29 @@ internal static class Program
             Console.WriteLine();
             Console.WriteLine("You have chosen Cash Payment to your trip!");
             Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
-            input = Console.ReadLine();
-            switch (input)
+            while (true)
             {
-                case "Y":
+                input = Console.ReadLine();
+                Console.WriteLine();
+            
+                if (input?.ToUpper() == "Y")
+                {
                     context.Execute();
                     break;
-                case "N":
-                    Trip.AddTrip(newTrip);
-                    return;
-                case "quit":
-                    Trip.AddTrip(newTrip);
-                    return;
+                }
+                switch (input?.ToUpper())
+                {
+                    case "N":
+                        Trip.AddTrip(newTrip);
+                        return;
+                    case "QUIT":
+                        Trip.AddTrip(newTrip);
+                        return;
+                    default:
+                        Console.WriteLine("Use a valid input, either Y/N/quit");
+                        Console.WriteLine();
+                        break;
+                }
             }
         }
 
@@ -297,18 +340,29 @@ internal static class Program
             Console.WriteLine();
             Console.WriteLine("You have chosen Check Payment to your trip!");
             Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
-            input = Console.ReadLine();
-            switch (input)
+            while (true)
             {
-                case "Y":
+                input = Console.ReadLine();
+                Console.WriteLine();
+            
+                if (input?.ToUpper() == "Y")
+                {
                     context.Execute();
                     break;
-                case "N":
-                    Trip.AddTrip(newTrip);
-                    return;
-                case "quit":
-                    Trip.AddTrip(newTrip);
-                    return;
+                }
+                switch (input?.ToUpper())
+                {
+                    case "N":
+                        Trip.AddTrip(newTrip);
+                        return;
+                    case "QUIT":
+                        Trip.AddTrip(newTrip);
+                        return;
+                    default:
+                        Console.WriteLine("Use a valid input, either Y/N/quit");
+                        Console.WriteLine();
+                        break;
+                }
             }
         }
 
@@ -319,18 +373,29 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("You have paid for your trip! You may now add a note to the trip!");
         Console.WriteLine("Would you like to keep going? Enter Y for yes or N for no, you may also quit now.");
-        input = Console.ReadLine();
-        switch (input)
+        while (true)
         {
-            case "Y":
+            input = Console.ReadLine();
+            Console.WriteLine();
+            
+            if (input?.ToUpper() == "Y")
+            {
                 context.Execute();
                 break;
-            case "N":
-                Trip.AddTrip(newTrip);
-                return;
-            case "quit":
-                Trip.AddTrip(newTrip);
-                return;
+            }
+            switch (input?.ToUpper())
+            {
+                case "N":
+                    Trip.AddTrip(newTrip);
+                    return;
+                case "QUIT":
+                    Trip.AddTrip(newTrip);
+                    return;
+                default:
+                    Console.WriteLine("Use a valid input, either Y/N/quit");
+                    Console.WriteLine();
+                    break;
+            }
         }
 
         if (context.Trip.Status == Status.AddNote) return;
@@ -340,19 +405,29 @@ internal static class Program
         Console.WriteLine("You have added the note to the trip! ");
         Console.WriteLine("Would you like to keep complete the trip? Enter Y for yes or N for no, " +
                           "\nyou may also quit now.");
-        input = Console.ReadLine();
-        switch (input)
+        while (true)
         {
-            case "Y":
+            input = Console.ReadLine();
+            Console.WriteLine();
+            
+            if (input?.ToUpper() == "Y")
+            {
                 context.Execute();
-                Trip.AddTrip(newTrip);
                 break;
-            case "N":
-                Trip.AddTrip(newTrip);
-                return;
-            case "quit":
-                Trip.AddTrip(newTrip);
-                return;
+            }
+            switch (input?.ToUpper())
+            {
+                case "N":
+                    Trip.AddTrip(newTrip);
+                    return;
+                case "QUIT":
+                    Trip.AddTrip(newTrip);
+                    return;
+                default:
+                    Console.WriteLine("Use a valid input, either Y/N/quit");
+                    Console.WriteLine();
+                    break;
+            }
         }
 
         Console.WriteLine();
