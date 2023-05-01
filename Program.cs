@@ -156,13 +156,20 @@ internal static class Program
     {
         Console.WriteLine();
         Console.WriteLine("Hello Agent #" + num + " !!!");
+        Console.WriteLine("****************************************");
         Console.WriteLine("Creating a new Trip ....");
+        Console.WriteLine("****************************************");
         Console.WriteLine("When will the start day of the trip be?");
         var startDate = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("****************************************");
         Console.WriteLine("When will the end day of the trip be?");
         var endDate = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("****************************************");
         Console.WriteLine("What time ill the trip start?");
         var startTime = Console.ReadLine();
+        Console.WriteLine();
         var newTrip = new Trip()
         {
             StartTime = startTime,
@@ -175,6 +182,7 @@ internal static class Program
         Console.WriteLine("A new Trip has been created, would you like to continue creating the trip?");
         Console.WriteLine("Enter Y for yes or N for no, you may also quit now.");
         var input = Console.ReadLine();
+        Console.WriteLine();
 
 
         //This will trigger TripStateAddTravelers
@@ -343,6 +351,7 @@ internal static class Program
      */
     private static int AgentLogIn()
     {
+        Console.WriteLine();
         Console.WriteLine("****************************************");
         Console.WriteLine("Welcome to the Trip reservation System!!");
         Console.WriteLine("****************************************");
@@ -351,8 +360,9 @@ internal static class Program
         Console.WriteLine("•Agent 3");
         Console.WriteLine();
         Console.WriteLine("Choose from the follow Agents to log in as, ");
-        Console.WriteLine("just enter the number corresponding to the agent");
+        Console.WriteLine("Just enter the number corresponding to the agent");
         var choice = Console.ReadLine();
+        Console.WriteLine();
 
         do
         {
