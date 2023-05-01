@@ -1,6 +1,3 @@
-using System.Xml;
-using System.Xml.Serialization;
-using TripReservation.Itinerary;
 using TripReservation.ItineraryFiles;
 using TripReservation.Json_XML;
 
@@ -10,6 +7,9 @@ internal static class Program
 {
     private static void Main()
     {
+        /*
+         * Main will go through the first UI flow, Agent Login
+         */
         var agentLogIn = AgentLogIn();
         switch (agentLogIn)
         {
@@ -24,10 +24,39 @@ internal static class Program
                 break;
         }
         
-        CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
-        
+        /*
+         * After agent login, the flow will ask if you would like to create a New Trip. You enter Y if yes or N for no
+         */
+        Console.WriteLine("Would you like to create a brand new trip? Y/N");
+        while (true)
+        {
+            var newOrList = Console.ReadLine()?.ToUpper();
+            Console.WriteLine();
+            if (newOrList == "Y")
+            {
+                CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
+                break;
+            }
+            if (newOrList == "N")
+            {
+                break;
+            }
+
+            Console.WriteLine("Wrong input, enter either Y or N");
+
+        }
+
+        /*
+         * This boolean variable quit will be set to true and exit the following do-while loop if the agent
+         * decides to quit the program after listing the trips.
+         */
         var quit = false;
         
+        /*
+         * This do-while loop will list the agent's trips, and then ask for an input with Y meaning you want to
+         * continue working on a trip, and N being you want to quit the program. You enter new if you would like to
+         * create a brand new trip which will take you through the CreateTripView() method.
+         */
         do
         {
             Writer.JsonSaveTrip();
@@ -38,19 +67,26 @@ internal static class Program
             //var input = Convert.ToInt32(num);
             Console.WriteLine("Would you like to work on one of these trips or start a new one?");
             Console.WriteLine("Type in either: Y/N/new");
-            var answer = Console.ReadLine();
+            var answer = Console.ReadLine()?.ToUpper();
             switch (answer)
             {
                 case "Y":
                 {
                     Console.WriteLine("Which trip would you like to work on?");
-                    var choice = Convert.ToInt32(Console.ReadLine());
+                    int choice;
+                    while (true)
+                    {
+                        choice = Convert.ToInt32(Console.ReadLine());
+                        if(choice >= 1 && choice < Trip.AllTrips.Count) break;
+                        Console.WriteLine("Enter a valid choice from the list");
+                    }
+                    
                     ContinueTrip(Trip.AllTrips?[choice - 1]);
         
                     //Gotta put stuff here
                     break;
                 }
-                case "new":
+                case "NEW":
                 {
                     CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
                     Writer.JsonSaveTrip();
@@ -71,27 +107,23 @@ internal static class Program
      */
     private static void CreateItinerary(Trip trip)
     {
-        Console.WriteLine("Creating Itenerary");
+        Console.WriteLine("Creating The Itinerary ... ");
         ItineraryFactory.Get(trip);
+        Console.WriteLine();
         
-        //var Itinerary itin = new Itinerary();
-        ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-        //itinerary.Output(trip);
+        var itinerary = new Itinerary(trip);
         var itin = new ItinDecorator(itinerary);
         var itin2 = new ItinDestination(itin);
         var itin3 = new ItinBooking(itin2);
         var itin4 = new ItinPerson(itin3);
         var itin5 = new ItinBilling(itin4);
-        //var itin3 = new 
         itin5.Output(trip);
         
-       // itinerary.Output(); 
-        //ItinComponent tripItin = new ItinBilling(new ItinDestination(new ItinBooking(new ItinPerson(new ItineraryFiles.Itinerary(trip)))));
-        //tripItin.Output();
-
         Console.WriteLine();
-      //  ItineraryFiles.Itinerary itinerary = new ItineraryFiles.Itinerary(trip);
-      //  itinerary.Output();
+        Console.WriteLine("Press any button to continue ...");
+        Console.ReadLine();
+
+        
     }
 
     /*
@@ -117,16 +149,23 @@ internal static class Program
             Console.WriteLine("You are in state: " + trip.Status);
             context.Execute();
             if (trip.Status == currentStatus) return;
-            Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?");
-
-            switch (Console.ReadLine())
+            Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?  Y/N/quit");
+            Console.WriteLine();
+            while (true)
             {
-                case "Y":
+                if (Console.ReadLine()?.ToUpper() == "Y")
+                {
                     break;
-                case "N":
+                }
+                if (Console.ReadLine()?.ToUpper() == "N")
+                {
                     Trip.AllTrips.Insert(trip.TripId - 1, trip);
                     return;
+                }
+
+                Console.WriteLine("Enter either Y or N");
             }
+ 
         }
 
         Trip.AllTrips.Insert(trip.TripId - 1, trip);
@@ -144,13 +183,20 @@ internal static class Program
     {
         Console.WriteLine();
         Console.WriteLine("Hello Agent #" + num + " !!!");
+        Console.WriteLine("****************************************");
         Console.WriteLine("Creating a new Trip ....");
+        Console.WriteLine("****************************************");
         Console.WriteLine("When will the start day of the trip be?");
         var startDate = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("****************************************");
         Console.WriteLine("When will the end day of the trip be?");
         var endDate = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine("****************************************");
         Console.WriteLine("What time ill the trip start?");
         var startTime = Console.ReadLine();
+        Console.WriteLine();
         var newTrip = new Trip()
         {
             StartTime = startTime,
@@ -163,10 +209,11 @@ internal static class Program
         Console.WriteLine("A new Trip has been created, would you like to continue creating the trip?");
         Console.WriteLine("Enter Y for yes or N for no, you may also quit now.");
         var input = Console.ReadLine();
+        Console.WriteLine();
 
 
         //This will trigger TripStateAddTravelers
-        switch (input)
+        switch (input?.ToUpper())
         {
             case "Y":
                 context.Execute();
@@ -174,7 +221,7 @@ internal static class Program
             case "N":
                 Trip.AddTrip(newTrip);
                 return;
-            case "quit":
+            case "QUIT":
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -331,6 +378,7 @@ internal static class Program
      */
     private static int AgentLogIn()
     {
+        Console.WriteLine();
         Console.WriteLine("****************************************");
         Console.WriteLine("Welcome to the Trip reservation System!!");
         Console.WriteLine("****************************************");
@@ -339,11 +387,12 @@ internal static class Program
         Console.WriteLine("•Agent 3");
         Console.WriteLine();
         Console.WriteLine("Choose from the follow Agents to log in as, ");
-        Console.WriteLine("just enter the number corresponding to the agent");
-        var choice = Console.ReadLine();
-
+        Console.WriteLine("Just enter the number corresponding to the agent");
         do
         {
+            var choice = Console.ReadLine();
+            Console.WriteLine();
+
             switch (choice)
             {
                 case "1":

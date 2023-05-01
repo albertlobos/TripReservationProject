@@ -2,6 +2,11 @@ using System.Collections;
 
 namespace TripReservation;
 
+/*
+ * This is the main trip class. This will hold all the data of the trip including price, payment,
+ * travelers, destination, start and end date and time. There is a static List<Trip> that is used
+ * to keep track of all instances of trip. This is the list that will ultimately be saved in JSON.
+ */
 public class Trip
 {
     private static List<Trip>? _allTrips = new();

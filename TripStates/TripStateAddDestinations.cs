@@ -24,6 +24,7 @@ public class TripStateAddDestinations : TripState
             Console.WriteLine("*************************");
             Console.WriteLine("Pick from the following destinations, simply enter the number to the location");
             var destination = Console.ReadLine();
+            Console.WriteLine();
             switch (destination)
             {
                 case "quit":
@@ -53,6 +54,7 @@ public class TripStateAddDestinations : TripState
 
             Console.WriteLine("Would You like to Change your Destination? Y/N");
             var answer = Console.ReadLine();
+            Console.WriteLine();
             switch (answer)
             {
                 case "quit":

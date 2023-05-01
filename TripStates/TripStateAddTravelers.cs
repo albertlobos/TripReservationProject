@@ -15,32 +15,36 @@ public class TripStateAddTravelers : TripState
             Console.WriteLine("************************");
             Console.WriteLine("**** Add a traveler ****");
             Console.WriteLine("************************");
-            Console.WriteLine("Enter First Name");
+            Console.WriteLine("Enter First Name: ");
             var firstName = Console.ReadLine();
+            Console.WriteLine();
             if (firstName == "quit")
             {
                 Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
-            Console.WriteLine("Enter Last Name");
+            Console.WriteLine("Enter Last Name: ");
             var lastName = Console.ReadLine();
+            Console.WriteLine();
             if (lastName == "quit")
             {
                 Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
-            Console.WriteLine("Enter Phone ");
+            Console.WriteLine("Enter Phone: ");
             var phoneNumber = Console.ReadLine();
+            Console.WriteLine();
             if (phoneNumber == "quit")
             {
                 Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
                 return Status.AddTravelers;
             }
 
-            Console.WriteLine("Enter Age");
+            Console.WriteLine("Enter Age: ");
             var ageString = Console.ReadLine();
+            Console.WriteLine();
             if (ageString == "quit")
             {
                 Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);

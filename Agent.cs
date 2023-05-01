@@ -1,5 +1,8 @@
 namespace TripReservation;
 
+/*
+ * This is the Agent Class that uses the Singleton Pattern
+ */
 public class Agent
 {
     private static Agent? _agent;
@@ -13,16 +16,3 @@ public class Agent
         }
     }
 }
-
-// public class Agent {
-//
-// 	public static Agent agent = null;
-// 	public static synchronized Agent getInstance() 
-// 	{
-// 		if(agent == null) 
-// 		{
-// 			agent = new Agent();
-// 		}
-// 		return agent;
-// 	}
-// }

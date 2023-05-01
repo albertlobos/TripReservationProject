@@ -16,7 +16,8 @@ public class Itinerary : ItinComponent
     
     public void Output(Trip trip)
     {
-        Console.WriteLine("itinerary by " + "" + "\n" + _trip.Note);
+        Console.WriteLine("Itinerary by " + "Agent 1" + "\n--------------------------\n" 
+                          +"\nNote from Travel Agent: " + _trip.Note);
     }
 
     public Trip Trip

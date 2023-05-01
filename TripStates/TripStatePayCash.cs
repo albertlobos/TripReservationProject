@@ -17,7 +17,9 @@ public class TripStatePayCash : TripState
             Console.WriteLine("**************************\n");
             Console.WriteLine("You Owe: " + amountDue);
             Console.WriteLine("How much will you be paying in cash today?");
+            Console.WriteLine("Enter the exact amount: ");
             var amountPaying = Console.ReadLine();
+            Console.WriteLine();
             var payment = Convert.ToDecimal(amountPaying);
 
             if (amountPaying == "quit")
