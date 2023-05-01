@@ -31,6 +31,7 @@ internal static class Program
         while (true)
         {
             var newOrList = Console.ReadLine()?.ToUpper();
+            Console.WriteLine();
             if (newOrList == "Y")
             {
                 CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
@@ -66,7 +67,7 @@ internal static class Program
             //var input = Convert.ToInt32(num);
             Console.WriteLine("Would you like to work on one of these trips or start a new one?");
             Console.WriteLine("Type in either: Y/N/new");
-            var answer = Console.ReadLine();
+            var answer = Console.ReadLine()?.ToUpper();
             switch (answer)
             {
                 case "Y":
@@ -78,7 +79,7 @@ internal static class Program
                     //Gotta put stuff here
                     break;
                 }
-                case "new":
+                case "NEW":
                 {
                     CreatingTripView(Convert.ToInt32(agentLogIn), Agent.GetInstance());
                     Writer.JsonSaveTrip();
@@ -143,14 +144,21 @@ internal static class Program
             if (trip.Status == currentStatus) return;
             Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?  Y/N/quit");
             Console.WriteLine();
-            switch (Console.ReadLine())
+            while (true)
             {
-                case "Y":
+                if (Console.ReadLine()?.ToUpper() == "Y")
+                {
                     break;
-                case "N":
+                }
+                if (Console.ReadLine()?.ToUpper() == "N")
+                {
                     Trip.AllTrips.Insert(trip.TripId - 1, trip);
                     return;
+                }
+
+                Console.WriteLine("Enter either Y or N");
             }
+ 
         }
 
         Trip.AllTrips.Insert(trip.TripId - 1, trip);
@@ -198,7 +206,7 @@ internal static class Program
 
 
         //This will trigger TripStateAddTravelers
-        switch (input)
+        switch (input?.ToUpper())
         {
             case "Y":
                 context.Execute();
@@ -206,7 +214,7 @@ internal static class Program
             case "N":
                 Trip.AddTrip(newTrip);
                 return;
-            case "quit":
+            case "QUIT":
                 Trip.AddTrip(newTrip);
                 return;
         }
@@ -373,11 +381,11 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("Choose from the follow Agents to log in as, ");
         Console.WriteLine("Just enter the number corresponding to the agent");
-        var choice = Console.ReadLine();
-        Console.WriteLine();
-
         do
         {
+            var choice = Console.ReadLine();
+            Console.WriteLine();
+
             switch (choice)
             {
                 case "1":
