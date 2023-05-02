@@ -53,7 +53,7 @@ public class TripStateAddDestinations : TripState
             }
 
             Console.WriteLine("Would You like to Change your Destination? Y/N");
-            var answer = Console.ReadLine();
+            var answer = Console.ReadLine().ToUpper();
             Console.WriteLine();
             switch (answer)
             {

@@ -151,13 +151,14 @@ internal static class Program
             if (trip.Status == currentStatus) return;
             Console.WriteLine("You have just finished the " + currentStatus + " state, Would you like to move on?  Y/N/quit");
             Console.WriteLine();
+            var answer = Console.ReadLine();
             while (true)
             {
-                if (Console.ReadLine()?.ToUpper() == "Y")
+                if (answer?.ToUpper() == "Y")
                 {
                     break;
                 }
-                if (Console.ReadLine()?.ToUpper() == "N")
+                if (answer?.ToUpper() == "N")
                 {
                     Trip.AllTrips.Insert(trip.TripId - 1, trip);
                     return;
@@ -170,6 +171,10 @@ internal static class Program
 
         Trip.AllTrips.Insert(trip.TripId - 1, trip);
         Console.WriteLine("You have completed the trip!");
+        Console.WriteLine("Lets print out the Itinerary ....");
+        Console.WriteLine();
+        CreateItinerary(trip);
+        Console.WriteLine();
         Console.WriteLine("We will take you back to the list of trips");
         Console.WriteLine();
     }
@@ -194,7 +199,7 @@ internal static class Program
         var endDate = Console.ReadLine();
         Console.WriteLine();
         Console.WriteLine("****************************************");
-        Console.WriteLine("What time ill the trip start?");
+        Console.WriteLine("What time will the trip start?");
         var startTime = Console.ReadLine();
         Console.WriteLine();
         var newTrip = new Trip()
@@ -413,6 +418,7 @@ internal static class Program
             if (input?.ToUpper() == "Y")
             {
                 context.Execute();
+                CreateItinerary(context.Trip);
                 break;
             }
             switch (input?.ToUpper())

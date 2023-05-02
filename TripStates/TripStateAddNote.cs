@@ -18,7 +18,11 @@ public class TripStateAddNote : TripState
             Console.WriteLine();
             var note = Console.ReadLine();
             Console.WriteLine();
-            if (note == "quit") return Status.AddNote;
+            if (note == "quit")
+            {
+                Trip.AllTrips.Insert(context.Trip.TripId - 1, context.Trip);
+                return Status.AddNote;
+            }
 
             Console.WriteLine("Your note says:  \n" + note);
             Console.WriteLine();

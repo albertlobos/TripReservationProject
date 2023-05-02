@@ -1,1 +1,1 @@
-[]
+[{"TripId":1,"Status":2,"StartTime":"234","StartDate":"awd","EndDate":"adw","Note":null,"Amount":null,"Destination":null,"ListOfPeople":[{"FirstName":"Albert","LastName":"Nelso","PhoneNumber":"121","Age":23}],"Vehicle":null,"Payment":null},{"TripId":2,"Status":7,"StartTime":"12:00 PM","StartDate":"October 5th","EndDate":"October 15th","Note":"Y","Amount":769.99,"Destination":"Los Angeles","ListOfPeople":[{"FirstName":"Nelso","LastName":"Villalobos","PhoneNumber":"4044444444","Age":23}],"Vehicle":null,"Payment":{"Amount":769.99}}]
